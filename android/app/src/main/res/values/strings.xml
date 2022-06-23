@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KnawNews</string>
+    <string name="facebook_app_id">505079357920717</string>
+    <string name="fb_login_protocol_scheme">fb505079357920717</string>
+    <string name="facebook_client_token">9a1ffb00a49fc340bd9bd91662e9b25d</string>
+</resources>

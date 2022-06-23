@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="clip-LOGO_With_Text">
+      <rect width="1024" height="1024"/>
+    </clipPath>
+  </defs>
+  <g id="LOGO_With_Text" clip-path="url(#clip-LOGO_With_Text)">
+    <rect width="1024" height="1024" fill="rgba(255,255,255,0)"/>
+    <g id="Group_1308" data-name="Group 1308" transform="translate(70.931 6.187)">
+      <text id="Knaw_news" data-name="Knaw news" transform="translate(12.069 972.626)" font-size="158" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">Knaw News</tspan></text>
+      <g id="Group_997" data-name="Group 997" transform="translate(125.925 31)">
+        <path id="Ellipse_154" data-name="Ellipse 154" d="M336.361,30.981A305.469,305.469,0,0,0,217.5,617.755,305.467,305.467,0,0,0,455.219,54.966,303.439,303.439,0,0,0,336.361,30.981m0-30.981C522.127,0,672.721,150.594,672.721,336.361S522.127,672.721,336.361,672.721,0,522.127,0,336.361,150.594,0,336.361,0Z" transform="translate(0 0)" fill="#ffbb01"/>
+        <path id="Ellipse_155" data-name="Ellipse 155" d="M234.567,30.981a203.649,203.649,0,0,0-79.236,391.187A203.647,203.647,0,0,0,313.8,46.967a202.283,202.283,0,0,0-79.236-15.986m0-30.981C364.115,0,469.134,105.019,469.134,234.567S364.115,469.134,234.567,469.134,0,364.115,0,234.567,105.019,0,234.567,0Z" transform="translate(97.367 0)" fill="#ffbb01"/>
+        <path id="Ellipse_156" data-name="Ellipse 156" d="M234.567,30.981a203.649,203.649,0,0,0-79.236,391.187A203.647,203.647,0,0,0,313.8,46.967a202.283,202.283,0,0,0-79.236-15.986m0-30.981C364.115,0,469.134,105.019,469.134,234.567S364.115,469.134,234.567,469.134,0,364.115,0,234.567,105.019,0,234.567,0Z" transform="translate(159.329 185.884)" fill="#ffbb01"/>
+      </g>
+    </g>
+  </g>
+</svg>

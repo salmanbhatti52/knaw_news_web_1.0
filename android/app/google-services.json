@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "889672491061",
+    "project_id": "knawnews-d6dcc",
+    "storage_bucket": "knawnews-d6dcc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889672491061:android:76c13a6a46e72ddafd917c",
+        "android_client_info": {
+          "package_name": "com.knawnews.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889672491061-tqdniq61cs77cc7s66l65g0t0a2j3rf0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.knawnews.app",
+            "certificate_hash": "2ab0ebcf76bb07fbc86435a363dc305923466f54"
+          }
+        },
+        {
+          "client_id": "889672491061-p8tb3bcfcvha5td8nbmp4i1cm24tb7o2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB045xApveslSKwrW_cNjKrXjAKOJLwoTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889672491061-p8tb3bcfcvha5td8nbmp4i1cm24tb7o2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "889672491061-963120jajtv822inslusbin5n60ch3tp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.knawnews.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889672491061:android:66d3dec6c28039a9fd917c",
+        "android_client_info": {
+          "package_name": "com.knawnews.apps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889672491061-bui0r3h2uiim5k3sadjssspjousgps70.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.knawnews.apps",
+            "certificate_hash": "2ab0ebcf76bb07fbc86435a363dc305923466f54"
+          }
+        },
+        {
+          "client_id": "889672491061-p8tb3bcfcvha5td8nbmp4i1cm24tb7o2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB045xApveslSKwrW_cNjKrXjAKOJLwoTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889672491061-p8tb3bcfcvha5td8nbmp4i1cm24tb7o2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "889672491061-963120jajtv822inslusbin5n60ch3tp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.knawnews.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

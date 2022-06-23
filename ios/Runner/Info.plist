@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>CFBundleDevelopmentRegion</key>
+    	<string>$(DEVELOPMENT_LANGUAGE)</string>
+    	<key>CFBundleDisplayName</key>
+    	<string>Knaw News</string>
+    	<key>CFBundleName</key>
+        <string>knaw_news</string>
+    	<key>CFBundleExecutable</key>
+    	<string>$(EXECUTABLE_NAME)</string>
+    	<key>CFBundleIdentifier</key>
+    	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    	<key>CFBundleInfoDictionaryVersion</key>
+    	<string>6.0</string>
+    	<key>CFBundlePackageType</key>
+    	<string>APPL</string>
+    	<key>CFBundleShortVersionString</key>
+    	<string>$(MARKETING_VERSION)</string>
+    	<key>CFBundleSignature</key>
+    	<string>????</string>
+    	<key>CFBundleVersion</key>
+        <string>$(CURRENT_PROJECT_VERSION)</string>
+        <key>LSRequiresIPhoneOS</key>
+        <true/>
+        <key>UILaunchStoryboardName</key>
+        <string>LaunchScreen</string>
+        <key>UIMainStoryboardFile</key>
+        <string>Main</string>
+        	<key>UIRequiresFullScreen</key>
+        	<true/>
+        <key>UISupportedInterfaceOrientations</key>
+        <array>
+        	<string>UIInterfaceOrientationPortrait</string>
+        	<string>UIInterfaceOrientationLandscapeLeft</string>
+        	<string>UIInterfaceOrientationLandscapeRight</string>
+        </array>
+        <key>UISupportedInterfaceOrientations~ipad</key>
+        <array>
+            <string>UIInterfaceOrientationPortrait</string>
+            <string>UIInterfaceOrientationPortraitUpsideDown</string>
+            <string>UIInterfaceOrientationLandscapeLeft</string>
+            <string>UIInterfaceOrientationLandscapeRight</string>
+        </array>
+        <key>UIViewControllerBasedStatusBarAppearance</key>
+        <false/>
+
+        <!-- FACEBOOK&GOOGLE CONFIG START HERE -->
+        <key>CFBundleURLTypes</key>
+        <array>
+            <dict>
+                <key>CFBundleURLSchemes</key>
+                <array>
+                    <string>fb505079357920717</string>
+                </array>
+            </dict>
+
+            <dict>
+                <key>CFBundleTypeRole</key>
+                <string>Editor</string>
+                <key>CFBundleURLSchemes</key>
+                <array>
+                    <string>com.googleusercontent.apps.1039543621874-38rqrundtkhp43nf5aqeg2d5o0ufqo75</string>
+                </array>
+            </dict>
+        </array>
+
+        <key>FacebookAppID</key>
+        <string>505079357920717</string>
+        <key>FacebookClientToken</key>
+        <string>9a1ffb00a49fc340bd9bd91662e9b25d</string>
+        <key>FacebookDisplayName</key>
+        <string>Knaw News</string>
+
+        <key>LSApplicationQueriesSchemes</key>
+        <array>
+            <string>fbauth</string>
+            <string>fb-messenger-share-api</string>
+            <string>fbauth2</string>
+            <string>fbshareextension</string>
+        </array>
+        <!-- FACEBOOK&GOOGLE CONFIG END HERE -->
+        <key>LSApplicationQueriesSchemes</key>
+
+        <array>
+            <string>https</string>
+            <string>http</string>
+            <string>NSPhotoLibraryUsageDescription</string>
+        </array>
+        <key>NSLocationAlwaysUsageDescription</key>
+        <string>Needed to access location</string>
+        <key>NSLocationWhenInUseUsageDescription</key>
+        <string>Needed to access location</string>
+        <key>NSCameraUsageDescription</key>
+        <string>Upload image from camera for screen background</string>
+        <key>NSLocationWhenInUseUsageDescription</key>
+        <string>This app needs access to location when open.</string>
+        <key>NSPhotoLibraryUsageDescription</key>
+        <string>Upload images for screen background</string>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
+</plist>
