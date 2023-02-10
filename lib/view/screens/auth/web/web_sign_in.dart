@@ -208,51 +208,51 @@ class _WebSignInState extends State<WebSignIn> {
                     ),
                     ),
                     SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          height: 45,
-                          width: size.width>750?size.width*0.24:size.width*0.45,
-                          decoration: BoxDecoration(
-                            color: Colors.blueAccent,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: TextButton(
-                            onPressed: () => isLanguage?signinWithFacebook():null,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                              Image.asset(Images.facebook, width: 30,),
-                              SizedBox(width: 5,),
-                              Text("SIGN IN WITH FACEBOOK", textAlign: TextAlign.center, style: openSansBold.copyWith(
-                                color: textBtnColor,
-                                  fontSize: size.width<1000&&size.width>750?Dimensions.fontSizeExtraSmall:Dimensions.fontSizeSmall,
-                                overflow: TextOverflow.ellipsis
-                              )),
-                            ]),
-                          ),
-                        ),
-                        SizedBox(height: 5),
-                        Container(
-                          height: 45,
-                          width: size.width>750?size.width*0.24:size.width*0.45,
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: TextButton(
-                            onPressed: () => isLanguage?signinWithGoogle():null,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                              Image.asset(Images.google, width: 20,),
-                              SizedBox(width: 20,),
-                              Text("SIGN IN WITH GOOGLE", textAlign: TextAlign.center, style: openSansBold.copyWith(
-                                color: textBtnColor,
-                                fontSize: size.width<1000&&size.width>750?Dimensions.fontSizeExtraSmall:Dimensions.fontSizeSmall,
-                              )),
-                            ]),
-                          ),
-                        ),
-                      ],
-                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: [
+                    //     Container(
+                    //       height: 45,
+                    //       width: size.width>750?size.width*0.24:size.width*0.45,
+                    //       decoration: BoxDecoration(
+                    //         color: Colors.blueAccent,
+                    //         borderRadius: BorderRadius.circular(5),
+                    //       ),
+                    //       child: TextButton(
+                    //         onPressed: () => isLanguage?signinWithFacebook():null,
+                    //         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    //           Image.asset(Images.facebook, width: 30,),
+                    //           SizedBox(width: 5,),
+                    //           Text("SIGN IN WITH FACEBOOK", textAlign: TextAlign.center, style: openSansBold.copyWith(
+                    //             color: textBtnColor,
+                    //               fontSize: size.width<1000&&size.width>750?Dimensions.fontSizeExtraSmall:Dimensions.fontSizeSmall,
+                    //             overflow: TextOverflow.ellipsis
+                    //           )),
+                    //         ]),
+                    //       ),
+                    //     ),
+                    //     SizedBox(height: 5),
+                    //     Container(
+                    //       height: 45,
+                    //       width: size.width>750?size.width*0.24:size.width*0.45,
+                    //       decoration: BoxDecoration(
+                    //         color: Colors.red,
+                    //         borderRadius: BorderRadius.circular(5),
+                    //       ),
+                    //       child: TextButton(
+                    //         onPressed: () => isLanguage?signinWithGoogle():null,
+                    //         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    //           Image.asset(Images.google, width: 20,),
+                    //           SizedBox(width: 20,),
+                    //           Text("SIGN IN WITH GOOGLE", textAlign: TextAlign.center, style: openSansBold.copyWith(
+                    //             color: textBtnColor,
+                    //             fontSize: size.width<1000&&size.width>750?Dimensions.fontSizeExtraSmall:Dimensions.fontSizeSmall,
+                    //           )),
+                    //         ]),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
                     SizedBox(height: 20),
                     TextButton(
                       style: TextButton.styleFrom(
