@@ -124,7 +124,7 @@ class _CommentScreenState extends State<CommentScreen> {
                                 width: 45,
                                 fit: BoxFit.cover,
                               ):Image.network(
-                                AppConstants.proxyUrl+AppData().userdetail!.profilePicture!,
+                               AppData().userdetail!.profilePicture!,
                                 width: 45,height: 45,fit: BoxFit.cover,
                               ),
                             ),
@@ -169,7 +169,7 @@ class _CommentScreenState extends State<CommentScreen> {
                               InkWell(
                                 onTap: (){
                                   if(comment==null||comment==""){
-                                    showCustomSnackBar(isReply?"Please add comment":"Please add comment");
+                                    // showCustomSnackBar(isReply?"Please add comment":"Please add comment");
                                   }
                                   else{
                                     isReply?addReply():addComment();
@@ -311,7 +311,7 @@ class _CommentScreenState extends State<CommentScreen> {
     else{
       totalComments=0;
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -333,7 +333,7 @@ class _CommentScreenState extends State<CommentScreen> {
     }
     else{
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -349,12 +349,12 @@ class _CommentScreenState extends State<CommentScreen> {
       //print(postDetail![0].toJson());
       Navigator.pop(context);
       getAllComments();
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
       //print(followDetail[2].toJson());
     }
     else{
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -384,7 +384,7 @@ class _CommentScreenState extends State<CommentScreen> {
 
       });
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -406,7 +406,7 @@ class _CommentScreenState extends State<CommentScreen> {
     }
     else{
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -429,12 +429,12 @@ class _CommentScreenState extends State<CommentScreen> {
       //print(postDetail![0].toJson());
       Navigator.pop(context);
       index==-1?getAllComments():getAllReplies(commentIndex);
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
       //print(followDetail[2].toJson());
     }
     else{
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
     }
   }
 }

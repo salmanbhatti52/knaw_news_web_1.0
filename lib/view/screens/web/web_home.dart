@@ -531,7 +531,7 @@ class _WebHomeState extends State<WebHome> with TickerProviderStateMixin {
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
       totalPost=0;
       print(totalPost.toString());
 
@@ -610,7 +610,7 @@ class _WebHomeState extends State<WebHome> with TickerProviderStateMixin {
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
       totalPost=0;
       print(totalPost.toString());
 

@@ -181,14 +181,14 @@ class _SmallTransitionState extends State<SmallTransition> {
       setState(() {
 
       });
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
     }
     else{
       Navigator.pop(context);
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
     }
   }
   Future<void> happyReact() async {
@@ -206,14 +206,14 @@ class _SmallTransitionState extends State<SmallTransition> {
       setState(() {
 
       });
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
     }
     else{
       Navigator.pop(context);
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -232,14 +232,14 @@ class _SmallTransitionState extends State<SmallTransition> {
       setState(() {
 
       });
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
     }
     else{
       Navigator.pop(context);
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -258,14 +258,14 @@ class _SmallTransitionState extends State<SmallTransition> {
       setState(() {
 
       });
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
     }
     else{
       Navigator.pop(context);
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -284,14 +284,14 @@ class _SmallTransitionState extends State<SmallTransition> {
       setState(() {
 
       });
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
     }
     else{
       Navigator.pop(context);
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }

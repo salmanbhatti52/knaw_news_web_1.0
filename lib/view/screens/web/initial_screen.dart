@@ -470,7 +470,7 @@ class _InitialScreenState extends State<InitialScreen> with TickerProviderStateM
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
       totalPost=0;
       print(totalPost.toString());
 
@@ -546,7 +546,7 @@ class _InitialScreenState extends State<InitialScreen> with TickerProviderStateM
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
       totalPost=0;
       print(totalPost.toString());
 

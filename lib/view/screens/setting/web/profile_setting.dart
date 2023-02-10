@@ -307,7 +307,7 @@ class _ProfileSettingState extends State<ProfileSetting> {
         setState(() {
 
         });
-        showCustomSnackBar(response['status'],isError: false);
+        // showCustomSnackBar(response['status'],isError: false);
       }
       else{
         Navigator.pop(context);
@@ -315,13 +315,13 @@ class _ProfileSettingState extends State<ProfileSetting> {
 
         });
         print(response['status']);
-        showCustomSnackBar(response['data']);
+        // showCustomSnackBar(response['data']);
       }
 
   }
   void updateDescription() async{
     if(_descriptionController.text.isEmpty){
-      showCustomSnackBar("Enter Description to update");
+      // showCustomSnackBar("Enter Description to update");
     }
     else{
       desciption=_descriptionController.text;
@@ -339,12 +339,12 @@ class _ProfileSettingState extends State<ProfileSetting> {
 
         print(AppData().userdetail!.toJson());
         Navigator.pop(context);
-        showCustomSnackBar(response['data'],isError: false);
+        // showCustomSnackBar(response['data'],isError: false);
       }
       else{
         Navigator.pop(context);
         print(response['status']);
-        showCustomSnackBar(response['data']);
+        // showCustomSnackBar(response['data']);
       }
     }
 

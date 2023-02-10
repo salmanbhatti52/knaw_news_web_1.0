@@ -63,13 +63,12 @@ class _WebSignInState extends State<WebSignIn> {
                 child: Column(
                     children: [
 
-                      const SizedBox(height: Dimensions.PADDING_SIZE_EXTRA_LARGE),
+
 
                       Container(
                         alignment: Alignment.centerLeft,
                           child: Text(isLanguage?"${AppData().language!.hey}, \n${AppData().language!.loginNow}":'Hey, \nLogin Now', style: openSansBold.copyWith(fontSize: 25)),
                       ),
-                      SizedBox(height: 25),
 
                       Align(
                         alignment: Alignment.topLeft,
@@ -82,7 +81,7 @@ class _WebSignInState extends State<WebSignIn> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 10),
 
                       Container(
                         width: MediaQuery.of(context).size.width*0.8,
@@ -114,7 +113,7 @@ class _WebSignInState extends State<WebSignIn> {
                             ),
                           ),
 
-                          SizedBox(height: 10,),
+                          SizedBox(height: 5,),
 
                           TextField(
                             onChanged: (value)=> profile.userPassword=value,
@@ -182,7 +181,7 @@ class _WebSignInState extends State<WebSignIn> {
                           ]),
                         ]),
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 5),
 
                       SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
 
@@ -200,7 +199,7 @@ class _WebSignInState extends State<WebSignIn> {
                         ]),
                       ),
                     ),
-                    SizedBox(height: 15),
+                    SizedBox(height: 10),
                     Container(
                     alignment: Alignment.center,
                     child: Text(
@@ -208,7 +207,7 @@ class _WebSignInState extends State<WebSignIn> {
                       style: openSansMedium.copyWith(color: textColor,fontSize: Dimensions.fontSizeDefault,),
                     ),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -254,7 +253,7 @@ class _WebSignInState extends State<WebSignIn> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 40),
+                    SizedBox(height: 20),
                     TextButton(
                       style: TextButton.styleFrom(
                         minimumSize: Size(1, 40),

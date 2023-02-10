@@ -13,6 +13,8 @@ import 'package:knaw_news/view/base/custom_image.dart';
 import 'package:knaw_news/view/screens/profile/follow_profile.dart';
 import 'package:knaw_news/view/screens/profile/profile_screen.dart';
 
+import '../../profile/web/web_follow_profile.dart';
+
 class UserInfo extends StatelessWidget {
   PostDetail? postDetail;
   UserInfo({this.postDetail});
@@ -20,7 +22,19 @@ class UserInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Get.toNamed(AppData().isAuthenticated?AppData().userdetail!.usersId==postDetail!.usersId?"/WebProfile":"/WebFollowProfile":"/WebSignIn"),
+      onTap: (){
+        if(GetPlatform.isDesktop){
+          if(AppData().isAuthenticated){
+            AppData().userdetail!.usersId==postDetail!.usersId?Get.toNamed("/WebProfile"):Get.to(() => WebFollowProfile(userId: postDetail!.usersId,));
+          }
+          else{
+            Get.toNamed("/WebSignIn");
+          }
+        }
+        else{
+          Get.to(() => AppData().userdetail!.usersId==postDetail!.usersId?ProfileScreen():FollowProfile(userId: postDetail!.usersId,));
+        }
+      },
       child: Container(
         padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.005),
         child: Row(
@@ -47,7 +61,7 @@ class UserInfo extends StatelessWidget {
                         width: 35,
                         fit: BoxFit.cover,
                       ):Image.network(
-                        AppConstants.proxyUrl+postDetail!.postUserProfilePicture!,
+                       postDetail!.postUserProfilePicture!,
                         width: 35,height: 35,fit: BoxFit.cover,
                       ),
                     ),
@@ -73,12 +87,15 @@ class UserInfo extends StatelessWidget {
                     ],
                   ),
 
-                  Row(
-                    children: [
-                      SvgPicture.asset(Images.clock,width:12,height:12,color: Colors.grey,),
-                      SizedBox(width: 5,),
-                      Text(postDetail!.timeAgo??'',style: openSansRegular.copyWith(fontSize:Dimensions.fontSizeExtraSmall,color:Colors.black),),
-                    ],
+                  Container(
+                    width: 100,
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(Images.clock,width:12,height:12,color: Colors.grey,),
+                        SizedBox(width: 5,),
+                        Expanded(child: Text(postDetail!.timeAgo??'',style: openSansRegular.copyWith(fontSize: 11,color:Colors.black),)),
+                      ],
+                    ),
                   ),
 
                 ],

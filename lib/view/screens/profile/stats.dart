@@ -105,7 +105,7 @@ class _StatsScreenState extends State<StatsScreen> {
 
         });
       }
-      showCustomSnackBar(response['status']);
+      // showCustomSnackBar(response['status']);
 
     }
   }

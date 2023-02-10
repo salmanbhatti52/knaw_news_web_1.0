@@ -165,7 +165,7 @@ class _FollowProfileState extends State<FollowProfile> with TickerProviderStateM
                               width: 90,
                               fit: BoxFit.cover,
                             ):Image.network(
-                              AppConstants.proxyUrl+userDetail.profilePicture!,
+                            userDetail.profilePicture!,
                               width: 90,height: 90,fit: BoxFit.cover,
                             ),
                           ),
@@ -319,7 +319,7 @@ class _FollowProfileState extends State<FollowProfile> with TickerProviderStateM
         setState(() {
 
         });
-        showCustomSnackBar(response['status']);
+        // showCustomSnackBar(response['status']);
       }
     }
   Future<void> followUser() async {
@@ -336,12 +336,12 @@ class _FollowProfileState extends State<FollowProfile> with TickerProviderStateM
       setState(() {
 
       });
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
       //print(followDetail[2].toJson());
     }
     else{
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -358,14 +358,14 @@ class _FollowProfileState extends State<FollowProfile> with TickerProviderStateM
 
       });
       Navigator.pop(context);
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
     }
     else{
       setState(() {
 
       });
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
     }
 
   }
@@ -382,14 +382,14 @@ class _FollowProfileState extends State<FollowProfile> with TickerProviderStateM
 
       });
       Navigator.pop(context);
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
     }
     else{
       setState(() {
 
       });
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
     }
 
   }

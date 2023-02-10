@@ -88,7 +88,7 @@ class _WebFollowProfileState extends State<WebFollowProfile> with TickerProvider
                                     width: 120,
                                     fit: BoxFit.cover,
                                   ):Image.network(
-                                    AppConstants.proxyUrl+userDetail.profilePicture!,
+                                    userDetail.profilePicture!,
                                     width: 120,height: 120,fit: BoxFit.cover,
                                   ),
                                 ),
@@ -261,7 +261,7 @@ class _WebFollowProfileState extends State<WebFollowProfile> with TickerProvider
         setState(() {
 
         });
-        showCustomSnackBar(response['status']);
+        // showCustomSnackBar(response['status']);
       }
     }
   Future<void> followUser() async {
@@ -278,12 +278,12 @@ class _WebFollowProfileState extends State<WebFollowProfile> with TickerProvider
       setState(() {
 
       });
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
       //print(followDetail[2].toJson());
     }
     else{
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -300,14 +300,14 @@ class _WebFollowProfileState extends State<WebFollowProfile> with TickerProvider
 
       });
       Navigator.pop(context);
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
     }
     else{
       setState(() {
 
       });
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
     }
 
   }
@@ -324,14 +324,14 @@ class _WebFollowProfileState extends State<WebFollowProfile> with TickerProvider
 
       });
       Navigator.pop(context);
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
     }
     else{
       setState(() {
 
       });
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
     }
 
   }

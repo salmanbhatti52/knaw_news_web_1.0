@@ -90,7 +90,7 @@ class _BookmarksState extends State<Bookmarks> {
 
         });
       }
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
       totalPost=0;
       print(totalPost.toString());
 

@@ -284,7 +284,7 @@ class _InitialState extends State<Initial> with TickerProviderStateMixin {
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
       totalPost=0;
       print(totalPost.toString());
 
@@ -360,7 +360,7 @@ class _InitialState extends State<Initial> with TickerProviderStateMixin {
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
       totalPost=0;
       print(totalPost.toString());
 

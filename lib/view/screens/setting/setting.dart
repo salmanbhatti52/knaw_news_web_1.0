@@ -83,7 +83,7 @@ class _SettingScreenState extends State<SettingScreen> {
                             width: 90,
                             fit: BoxFit.cover,
                           ):Image.network(
-                            AppConstants.proxyUrl+user.profilePicture!,
+                            user.profilePicture!,
                             width: 90,height: 90,fit: BoxFit.cover,
                           ),
                         ),

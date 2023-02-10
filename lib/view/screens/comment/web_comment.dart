@@ -130,7 +130,7 @@ class _WebCommentState extends State<WebComment> {
                                 width: 45,
                                 fit: BoxFit.cover,
                               ):Image.network(
-                                AppConstants.proxyUrl+AppData().userdetail!.profilePicture!,
+                                AppData().userdetail!.profilePicture!,
                                 width: 45,height: 45,fit: BoxFit.cover,
                               ),
                             ),
@@ -175,7 +175,7 @@ class _WebCommentState extends State<WebComment> {
                                   },
                                   onEditingComplete: (){
                                     if(comment==null||comment==""){
-                                      showCustomSnackBar(isReply?"Please add Reply":"Please add comment");
+                                      // showCustomSnackBar(isReply?"Please add Reply":"Please add comment");
                                     }
                                     else{
                                       isReply?addReply():addComment();
@@ -187,7 +187,7 @@ class _WebCommentState extends State<WebComment> {
                               InkWell(
                                 onTap: (){
                                   if(comment==null||comment==""){
-                                    showCustomSnackBar(isReply?"Please add Reply":"Please add comment");
+                                    // showCustomSnackBar(isReply?"Please add Reply":"Please add comment");
                                   }
                                   else{
                                     isReply?addReply():addComment();
@@ -351,7 +351,7 @@ class _WebCommentState extends State<WebComment> {
     }
     else{
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -367,12 +367,12 @@ class _WebCommentState extends State<WebComment> {
       //print(postDetail![0].toJson());
       Navigator.pop(context);
       getAllComments();
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
       //print(followDetail[2].toJson());
     }
     else{
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -402,7 +402,7 @@ class _WebCommentState extends State<WebComment> {
 
       });
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -424,7 +424,7 @@ class _WebCommentState extends State<WebComment> {
     }
     else{
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -447,12 +447,12 @@ class _WebCommentState extends State<WebComment> {
       //print(postDetail![0].toJson());
       Navigator.pop(context);
       index==-1?getAllComments():getAllReplies(commentIndex);
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
       //print(followDetail[2].toJson());
     }
     else{
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
     }
   }
 }

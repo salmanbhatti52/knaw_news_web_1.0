@@ -69,7 +69,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
     else{
       Navigator.pop(context);
       print(response['message']);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
     }
   }
   void updateLanguage(String language) async {

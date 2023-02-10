@@ -47,7 +47,15 @@ void main() async{
   //     appId: "1:1039543621874:web:faf92914f991ce2798186b",
   //     measurementId: "G-CFPZNY24GV"
   // ),
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    // Replace with actual values
+    options: FirebaseOptions(
+      apiKey: "XXX",
+      appId: "XXX",
+      messagingSenderId: "XXX",
+      projectId: "XXX",
+    ),
+  );
   await AppData.initiate();
   AppData().userlocation=UserLocation();
   runApp(const MyApp());

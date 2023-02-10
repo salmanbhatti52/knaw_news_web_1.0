@@ -85,7 +85,7 @@ class _WebProfileState extends State<WebProfile> with TickerProviderStateMixin {
                                     width: 120,
                                     fit: BoxFit.cover,
                                   ):Image.network(
-                                    AppConstants.proxyUrl+userDetail.profilePicture!,
+                                    userDetail.profilePicture!,
                                     width: 120,height: 120,fit: BoxFit.cover,
                                   ),
                                 ),
@@ -228,7 +228,7 @@ class _WebProfileState extends State<WebProfile> with TickerProviderStateMixin {
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }

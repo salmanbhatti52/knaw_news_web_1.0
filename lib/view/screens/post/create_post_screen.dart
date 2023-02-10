@@ -821,7 +821,7 @@ class _PostScreenState extends State<PostScreen> {
     else{
       print("2---------------error response-----------");
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }

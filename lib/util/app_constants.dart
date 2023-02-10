@@ -26,7 +26,7 @@ class AppConstants {
 
   static const String apiKey = "AIzaSyAhbodOoBP15CKF9qorZDGslVPWtQBLiN8";
   static const String apiUrl = 'https://app.knawnews.com/api/';
-  static const String proxyUrl = 'https://cros-anywhere.herokuapp.com/';
+  // static const String proxyUrl = 'https://cros-anywhere.herokuapp.com/';
   static const String register = 'signup';
 
 

@@ -81,13 +81,13 @@ class _ReportDialogState extends State<ReportDialog> {
       //widget.postDetail!.isBookmarked=="false"?widget.postDetail!.isBookmarked="true":widget.postDetail!.isBookmarked="false";
       Navigator.pop(context);
       Navigator.pop(context);
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
       print(response['data']);
     }
     else{
       Navigator.pop(context);
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
     Navigator.pop(context);
@@ -106,12 +106,12 @@ class _ReportDialogState extends State<ReportDialog> {
       //widget.postDetail!.isBookmarked=="false"?widget.postDetail!.isBookmarked="true":widget.postDetail!.isBookmarked="false";
       Navigator.pop(context);
       Navigator.pop(context);
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
     }
     else{
       Navigator.pop(context);
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
     Navigator.pop(context);

@@ -74,7 +74,6 @@ class _WebAboutState extends State<WebAbout> {
         setState(() {
 
         });
-        showCustomSnackBar(value.message??"");
       }
     });
     Navigator.pop(context);

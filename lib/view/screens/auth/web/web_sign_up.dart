@@ -72,7 +72,7 @@ class _WebSignUpState extends State<WebSignUp> {
             child: Column(
                 children: [
 
-                  SizedBox(height: MediaQuery.of(context).size.height*0.02),
+
 
                   Container(
                     alignment: Alignment.centerLeft,
@@ -80,7 +80,7 @@ class _WebSignUpState extends State<WebSignUp> {
                   ),
 
 
-                  SizedBox(height: 30),
+                  SizedBox(height: 10),
 
                   Container(
                     width: MediaQuery.of(context).size.width*0.8,
@@ -206,7 +206,7 @@ class _WebSignUpState extends State<WebSignUp> {
 
                     ]),
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height*0.1),
+                  SizedBox(height: MediaQuery.of(context).size.height*0.04),
 
                   Container(
                     height: 45,
@@ -223,7 +223,6 @@ class _WebSignUpState extends State<WebSignUp> {
                     ),
                   ),
 
-                  SizedBox(height: 15),
                   Container(
                     alignment: Alignment.center,
                     child: Text(
@@ -231,7 +230,7 @@ class _WebSignUpState extends State<WebSignUp> {
                       style: openSansMedium.copyWith(color: textColor,fontSize: Dimensions.fontSizeDefault,),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -280,7 +279,7 @@ class _WebSignUpState extends State<WebSignUp> {
 
 
 
-                  SizedBox(height: 40),
+                  SizedBox(height: 15),
                   TextButton(
                     style: TextButton.styleFrom(
                       minimumSize: Size(1, 40),

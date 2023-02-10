@@ -197,7 +197,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                       fit: BoxFit.cover,
                                     ):
                                     Image.network(
-                                      AppConstants.proxyUrl+postDetail![index].postPicture!,
+                                     postDetail![index].postPicture!,
                                       width: 60,height: 55,fit: BoxFit.cover,
                                     ),
                                   ),
@@ -237,7 +237,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                       fit: BoxFit.cover,
                                     ):
                                     Image.network(
-                                      AppConstants.proxyUrl+recentDetail![index].postDetail!.postPicture!,
+                                     recentDetail![index].postDetail!.postPicture!,
                                       width: 60,height: 55,fit: BoxFit.cover,
                                     ),
                                   ),

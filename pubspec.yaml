@@ -34,7 +34,7 @@ dependencies:
   google_sign_in: ^5.2.1
   google_sign_in_dartio: ^0.2.0
   firebase_auth: ^3.3.7
-  firebase_core: ^1.12.0
+  firebase_core: ^1.10.0
   flutter_facebook_auth: ^3.5.7
   flutter_login_facebook: ^1.4.0+1
   image_picker: ^0.8.4+4
@@ -60,7 +60,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+dependency_overrides:
+  firebase_core_platform_interface: 4.5.1
 
   flutter_lints: ^1.0.0
   build_runner: ^2.1.7
@@ -75,7 +76,7 @@ flutter:
 
   assets:
     - assets/image/
-    - assets/language/
+
 
   fonts:
     - family: OpenSans

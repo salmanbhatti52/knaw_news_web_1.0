@@ -28,7 +28,7 @@ class ReplierDetail extends StatelessWidget {
                 width: 30,
                 fit: BoxFit.cover,
               ):Image.network(
-                AppConstants.proxyUrl+replyDetail!.replyProfilePicture!,
+               replyDetail!.replyProfilePicture!,
                 width: 30,height: 30,fit: BoxFit.cover,
               ),
             ),

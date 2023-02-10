@@ -111,7 +111,7 @@ class _ProfileScreenState extends State<ProfileScreen> with TickerProviderStateM
                               width: 90,
                               fit: BoxFit.cover,
                             ):Image.network(
-                              AppConstants.proxyUrl+userDetail.profilePicture!,
+                             userDetail.profilePicture!,
                               width: 90,height: 90,fit: BoxFit.cover,
                             ),
                           ),
@@ -239,7 +239,7 @@ class _ProfileScreenState extends State<ProfileScreen> with TickerProviderStateM
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }

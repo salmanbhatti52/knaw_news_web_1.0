@@ -31,7 +31,7 @@ class MuteMemberCard extends StatelessWidget {
                   width: 45,
                   fit: BoxFit.cover,
                 ):Image.network(
-                  AppConstants.proxyUrl+mutedMemberDetail!.mutedMemberProfilePicture!,
+                  mutedMemberDetail!.mutedMemberProfilePicture!,
                   width: 45,height: 45,fit: BoxFit.cover,
                 ),
               ),

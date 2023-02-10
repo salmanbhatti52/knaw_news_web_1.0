@@ -49,6 +49,7 @@ class _FullTransitionState extends State<FullTransition> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    print('my image is: ${widget.postDetail!.postPicture!}');
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       translate();
     });
@@ -124,65 +125,12 @@ class _FullTransitionState extends State<FullTransition> {
                           ),
                         )
                     ),
-                    // Container(
-                    //   child: ClipRect(
-                    //     child:  BackdropFilter(
-                    //       filter:  ImageFilter.blur(sigmaX:1, sigmaY:1.2),
-                    //       child:  Container(
-                    //         width: 80,
-                    //         height:  15,
-                    //         decoration:  BoxDecoration(color: Colors.grey.shade100.withOpacity(0.5)),
-                    //         alignment: Alignment.centerRight,
-                    //         child: InkWell(
-                    //             onTap: (){
-                    //               isReadMore=true;
-                    //               setState(() {
-                    //               });
-                    //             },
-                    //             child: Text("(Read More)",style: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall,color: Colors.amber))
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // )
+
                   ],
                 ),
               ),
 
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 5.0),
-              //   child: ExpandableText(
-              //     widget.postDetail!.description!,
-              //     linkEllipsis: false,
-              //     expandText: "(Read More)",
-              //     maxLines: 3,
-              //     prefixText: "Prefix",
-              //     collapseText: "Collasp",
-              //     semanticsLabel: "Label",
-              //     style: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall,color: Colors.black,overflow: TextOverflow.fade),
-              //     linkStyle: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall,color: Colors.amber),
-              //     hashtagStyle: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall,color: Colors.red),
-              //     mentionStyle: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall,color: Colors.green),
-              //     prefixStyle: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall,color: Colors.blue),
-              //     urlStyle: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall,color: Colors.orangeAccent),
-              //
-              //     onExpandedChanged: (val){
-              //       widget.postDetail!.isViewed!?null:viewPost();
-              //       print("tap expand");
-              //     },
-              //   ),
-              // ),
-              // ExpandableTextWidget(
-              //   title: Text(
-              //     widget.postDetail!.description!,
-              //     style: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall,color: Colors.black),
-              //   ),
-              //   text: "test",
-              //   textStyle: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall,color: Colors.black),
-              //   downIcon: Text("(Read More)",style: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall,color: Colors.amber),),
-              //
-              // ),
-              //Post Image
+
               Container(
                 padding: EdgeInsets.symmetric(vertical: 5),
                 child: ClipRRect(
@@ -190,7 +138,7 @@ class _FullTransitionState extends State<FullTransition> {
                   SizedBox():
                   Image.network(
                     //"https://cros-anywhere.herokuapp.com/"+widget.postDetail!.postPicture??'',
-                    AppConstants.proxyUrl+widget.postDetail!.postPicture!,
+                    widget.postDetail!.postPicture!,
                     height: GetPlatform.isDesktop?MediaQuery.of(context).size.width*0.2: MediaQuery.of(context).size.height*0.25, width: MediaQuery.of(context).size.width*0.9,fit: BoxFit.cover,
                   ),
                 ),
@@ -324,14 +272,14 @@ class _FullTransitionState extends State<FullTransition> {
       setState(() {
 
       });
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
     }
     else{
       Navigator.pop(context);
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -350,14 +298,14 @@ class _FullTransitionState extends State<FullTransition> {
       setState(() {
 
       });
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
     }
     else{
       Navigator.pop(context);
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -376,14 +324,14 @@ class _FullTransitionState extends State<FullTransition> {
       setState(() {
 
       });
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
     }
     else{
       Navigator.pop(context);
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -402,14 +350,14 @@ class _FullTransitionState extends State<FullTransition> {
       setState(() {
 
       });
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
     }
     else{
       Navigator.pop(context);
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -428,14 +376,14 @@ class _FullTransitionState extends State<FullTransition> {
       setState(() {
 
       });
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
     }
     else{
       Navigator.pop(context);
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -452,14 +400,14 @@ class _FullTransitionState extends State<FullTransition> {
       setState(() {
 
       });
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
     }
     else{
       //Navigator.pop(context);
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }

@@ -32,7 +32,7 @@ class FollowCard extends StatelessWidget {
                   width: 45,
                   fit: BoxFit.cover,
                 ):Image.network(
-                  AppConstants.proxyUrl+icon,
+                  icon,
                   width: 45,height: 45,fit: BoxFit.cover,
                 ),
               ),

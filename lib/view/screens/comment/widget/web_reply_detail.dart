@@ -31,7 +31,7 @@ class WebReplierDetail extends StatelessWidget {
                 width: 40,
                 fit: BoxFit.cover,
               ):Image.network(
-                AppConstants.proxyUrl+replyDetail!.replyProfilePicture!,
+               replyDetail!.replyProfilePicture!,
                 width: 40,height: 40,fit: BoxFit.cover,
               ),
             ),

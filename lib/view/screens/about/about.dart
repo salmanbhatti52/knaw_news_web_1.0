@@ -65,7 +65,6 @@ class _AboutScreenState extends State<AboutScreen> {
         setState(() {
 
         });
-        showCustomSnackBar(value.message??"");
       }
     });
     Navigator.pop(context);

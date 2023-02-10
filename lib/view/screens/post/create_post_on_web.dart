@@ -812,12 +812,12 @@ class _WebPostScreenState extends State<WebPostScreen> {
   Future<void> postNews() async {
     print(post.toJson());
     if(post.country!.isEmpty){
-      showCustomSnackBar("Choose Location");
+      // showCustomSnackBar("Choose Location");
       return;
     }
     if(isEvent&&!isEventIndefinit&&(eventStartDate.text.isEmpty||eventEndDate.text.isEmpty)){
       print("here");
-      showCustomSnackBar("Select Event start and end date");
+      // showCustomSnackBar("Select Event start and end date");
       return;
     }
     openLoadingDialog(context, "Loading");
@@ -845,7 +845,7 @@ class _WebPostScreenState extends State<WebPostScreen> {
     else{
       print("2---------------error response-----------");
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -864,13 +864,13 @@ class _WebPostScreenState extends State<WebPostScreen> {
     if(response['status']=='success'){
       post.postPicture=response["data"];
       Navigator.pop(context);
-      showCustomSnackBar(response['data']);
+      // showCustomSnackBar(response['data']);
     }
     else{
       Navigator.pop(context);
       print("helllooo");
       print(response['message']);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }

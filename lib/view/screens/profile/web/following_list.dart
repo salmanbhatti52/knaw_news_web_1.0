@@ -104,7 +104,7 @@ class _FollowingListState extends State<FollowingList> {
     else{
       Navigator.pop(context);
       totalFollowers=-1;
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -131,7 +131,7 @@ class _FollowingListState extends State<FollowingList> {
     else{
       Navigator.pop(context);
       totalFollowers=-1;
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -149,12 +149,12 @@ class _FollowingListState extends State<FollowingList> {
       setState(() {
 
       });
-      showCustomSnackBar(response['data']);
+      // showCustomSnackBar(response['data']);
       //print(followDetail[2].toJson());
     }
     else{
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }

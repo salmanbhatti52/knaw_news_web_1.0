@@ -223,7 +223,7 @@ class _WebSearchState extends State<WebSearch> {
                                           fit: BoxFit.cover,
                                         ):
                                         Image.network(
-                                          AppConstants.proxyUrl+postDetail![index].postPicture!,
+                                         postDetail![index].postPicture!,
                                           width: 60,height: 55,fit: BoxFit.cover,
                                         ),
                                       ),
@@ -263,7 +263,7 @@ class _WebSearchState extends State<WebSearch> {
                                           fit: BoxFit.cover,
                                         ):
                                         Image.network(
-                                          AppConstants.proxyUrl+recentDetail![index].postDetail!.postPicture!,
+                                          recentDetail![index].postDetail!.postPicture!,
                                           width: 60,height: 55,fit: BoxFit.cover,
                                         ),
                                       ),
@@ -320,7 +320,7 @@ class _WebSearchState extends State<WebSearch> {
 
       });
       //Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -346,7 +346,7 @@ class _WebSearchState extends State<WebSearch> {
 
       });
       Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -371,7 +371,7 @@ class _WebSearchState extends State<WebSearch> {
 
       });
       //Navigator.pop(context);
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -387,14 +387,14 @@ class _WebSearchState extends State<WebSearch> {
       setState(() {
 
       });
-      showCustomSnackBar(response['data'],isError: false);
+      // showCustomSnackBar(response['data'],isError: false);
     }
     else{
       //Navigator.pop(context);
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }
@@ -424,7 +424,7 @@ class _WebSearchState extends State<WebSearch> {
       setState(() {
 
       });
-      showCustomSnackBar(response['message']);
+      // showCustomSnackBar(response['message']);
 
     }
   }

@@ -65,7 +65,7 @@ class _MyDrawerState extends State<MyDrawer> {
                             width: 90,
                             fit: BoxFit.cover,
                           ):Image.network(
-                            AppConstants.proxyUrl+AppData().userdetail!.profilePicture!,
+                            AppData().userdetail!.profilePicture!,
                             width: 90,height: 90,fit: BoxFit.cover,
                           ),
                         ),

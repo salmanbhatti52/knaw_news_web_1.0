@@ -28,7 +28,6 @@ class AuthScreen extends StatelessWidget {
                 child: Column(children: [
 
                   SizedBox(height: 20),
-                  Image.asset(Images.logo_with_name, width: 150,),
                   //const SizedBox(height: Dimensions.PADDING_SIZE_EXTRA_LARGE),
                   // Text('Knaw News', style: openSansExtraBold.copyWith(fontSize: 25)),
                   SizedBox(height: 80),

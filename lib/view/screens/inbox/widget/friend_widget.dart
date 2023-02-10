@@ -39,7 +39,7 @@ class _FriendCardState extends State<FriendCard> {
                   fit: BoxFit.cover,
                 ):
                 Image.network(
-                  AppConstants.proxyUrl+widget.notificationDetail!.senderUserProfilePicture!,
+                  widget.notificationDetail!.senderUserProfilePicture!,
                   width: 40,height: 40,fit: BoxFit.cover,
                 ),
               ),
@@ -65,7 +65,7 @@ class _FriendCardState extends State<FriendCard> {
                 fit: BoxFit.cover,
               ):
               Image.network(
-                AppConstants.proxyUrl+widget.notificationDetail!.newsPostPicture!,
+               widget.notificationDetail!.newsPostPicture!,
                 width: 40,height: 60,fit: BoxFit.cover,
               ),
             ),

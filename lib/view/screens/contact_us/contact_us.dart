@@ -190,18 +190,18 @@ class _ContactUsState extends State<ContactUs> {
   }
   Future<void> sendMessage() async {
     if(subject==null){
-      showCustomSnackBar("Choose Subject");
+      // showCustomSnackBar("Choose Subject");
 
     }
     else if(nameController.text.trim().isEmpty){
-      showCustomSnackBar("Enter Name");
+      // showCustomSnackBar("Enter Name");
 
     }
     else if(emailController.text.trim().isEmpty){
-      showCustomSnackBar("Enter Email");
+      // showCustomSnackBar("Enter Email");
     }
     else if(messageController.text.trim().isEmpty){
-      showCustomSnackBar("Type Message");
+      // showCustomSnackBar("Type Message");
     }
     else{
       openLoadingDialog(context, "Sending");
@@ -215,7 +215,7 @@ class _ContactUsState extends State<ContactUs> {
       });
       if(response['status']=='success'){
         Navigator.pop(context);
-        showCustomSnackBar(response['data'],isError: false);
+        // showCustomSnackBar(response['data'],isError: false);
         if(widget.fromMobile) {
           Navigator.pop(context);
         } else {
@@ -225,7 +225,7 @@ class _ContactUsState extends State<ContactUs> {
       else{
         print("2---------------error response-----------");
         Navigator.pop(context);
-        showCustomSnackBar(response['message']);
+        // showCustomSnackBar(response['message']);
 
       }
       nameController.clear();

@@ -32,7 +32,7 @@ class WebCommenterDetail extends StatelessWidget {
                 width: 40,
                 fit: BoxFit.cover,
               ):Image.network(
-                AppConstants.proxyUrl+commentDetail!.commentProfilePicture!,
+               commentDetail!.commentProfilePicture!,
                 width: 40,height: 40,fit: BoxFit.cover,
               ),
             ),
