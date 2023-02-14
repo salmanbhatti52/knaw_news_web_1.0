@@ -96,11 +96,12 @@ class _FullTransitionState extends State<FullTransition> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: GetPlatform.isDesktop? MediaQuery.of(context).size.width*0.01: 5.0),
                 child: Stack(
+
                   children: [
                     Text(
                       widget.postDetail!.description!,
                       maxLines: isReadMore?100:3,
-                      style: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall,color: Colors.black,overflow: TextOverflow.fade),
+                      style: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall,color: Colors.black,overflow: TextOverflow.clip),
                     ),
                     isReadMore?SizedBox():
                     Positioned(
