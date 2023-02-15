@@ -50,7 +50,7 @@ void main() async{
   // ),
   await Firebase.initializeApp(
     // Replace with actual values
-    options: const FirebaseOptions(
+    options: FirebaseOptions(
       apiKey: "XXX",
       appId: "XXX",
       messagingSenderId: "XXX",
@@ -74,14 +74,10 @@ class MyApp extends StatelessWidget {
       scrollBehavior: MyCustomScrollBehavior().copyWith(scrollbars: false),
       theme: light,
       routes: {
-        "/" : (context) =>
-        // AppData().isAuthenticated?WebHome()
-        //     :InitialScreen(),
-        GetPlatform.isDesktop?AppData().isAuthenticated?WebHome()
-            :InitialScreen():AppData().isAuthenticated?HomeScreen():Initial(),
+        "/" : (context) => GetPlatform.isDesktop?AppData().isAuthenticated?WebHome():InitialScreen():AppData().isAuthenticated?HomeScreen():Initial(),
         "/WebHome": (context) => WebHome(),
         "/WebProfile": (context) => WebProfile(),
-        "/ProfileScreen": (context) => ProfileScreen(),
+        "/Profile": (context) => ProfileScreen(),
         "/WebSearch": (context) => WebSearch(),
         "/WebFollowProfile": (context) => WebFollowProfile(userId: int.tryParse(Get.parameters['id']??'0'),),
         "/ProfileSetting": (context) => ProfileSetting(),

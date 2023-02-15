@@ -12,14 +12,15 @@ import 'package:knaw_news/view/screens/dashboard/dashboard_screen.dart';
 import 'package:knaw_news/view/screens/home/initial.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  String leading;
+  String? leading;
   String title;
   String? suffix;
   bool isBack;
   bool isTitle;
   bool isSuffix;
+  bool? isleading;
   void Function()? suffixTap;
-  CustomAppBar({required this.leading,required this.title,this.suffix,this.isBack=false,this.isTitle=false,this.isSuffix=true,this.suffixTap});
+  CustomAppBar({this.isleading, this.leading,required this.title,this.suffix,this.isBack=false,this.isTitle=false,this.isSuffix=true,this.suffixTap});
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +39,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       elevation: 0,
-      leading: Builder(
+     leading:  isleading==true? Builder(
         builder: (context) => isBack?IconButton(
           icon: Padding(
             padding: const EdgeInsets.only(top: 10.0,bottom: 10),
-            child: SvgPicture.asset(leading, width: 20,color: Colors.black,),
+            child: SvgPicture.asset(leading!, width: 20,color: Colors.black,),
           ),
           onPressed: () {
             print("bak tap");
@@ -51,11 +52,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ):IconButton(
           icon: Padding(
             padding: const EdgeInsets.all(5.0),
-            child: SvgPicture.asset(leading, width: 20,color: Colors.black,),
+            child: SvgPicture.asset(leading!, width: 20,color: Colors.black,),
           ),
           onPressed: () => AppData().isAuthenticated?Scaffold.of(context).openDrawer():null,
         ),
-      ),
+      ):Text(''),
       title: isTitle?Text(title,style: openSansExtraBold.copyWith(color: Colors.black),):SvgPicture.asset(title,width: 100,),
       centerTitle: true,
       backgroundColor: Colors.white,

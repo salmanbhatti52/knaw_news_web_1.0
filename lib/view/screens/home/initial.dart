@@ -100,7 +100,7 @@ class _InitialState extends State<Initial> with TickerProviderStateMixin {
     print("setState called");
     return Scaffold(
       // drawer: new MyDrawer(),
-      appBar: CustomAppBar(leading: Images.menu,title: Images.logo_name,isSuffix: false,),
+      appBar: CustomAppBar(leading: Images.menu,title: Images.logo_name,isSuffix: false,isleading: false,),
       // bottomNavigationBar: ClipRRect(
       //   borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
       //   child: BottomAppBar(

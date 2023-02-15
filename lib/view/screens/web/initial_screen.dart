@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -45,8 +43,6 @@ import 'package:knaw_news/view/screens/web/widget/help.dart';
 import 'package:knaw_news/view/screens/web/widget/user_info.dart';
 import 'package:knaw_news/view/screens/web/widget/web_sidebar.dart';
 import 'package:knaw_news/view/screens/web/widget/web_sidebar_item.dart';
-import 'package:store_redirect/store_redirect.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 
 class InitialScreen extends StatefulWidget  {
@@ -79,7 +75,6 @@ class _InitialScreenState extends State<InitialScreen> with TickerProviderStateM
   void initState() {
     // TODO: implement initState
     super.initState();
-
     isLanguage=AppData().isLanguage;
     getLanguage();
     _tabController = TabController(length: 14, initialIndex: 0, vsync: this,);
@@ -88,13 +83,6 @@ class _InitialScreenState extends State<InitialScreen> with TickerProviderStateM
     //loadOtherPosts(isTap: false);
     getLocation();
     recentPost();
-    // Future.delayed(Duration.zero, () {
-    //   if(GetPlatform.isWeb){
-    //     showSnackBar(context);
-    //   }
-    // });
-
-
   }
   @override
   void dispose() {
@@ -142,7 +130,7 @@ class _InitialScreenState extends State<InitialScreen> with TickerProviderStateM
     double mediaWidth=size.width<1000?size.width:size.width*0.7;
 
     return Scaffold(
-      drawer: new MyDrawer(),
+      // drawer: new MyDrawer(),
       appBar: WebMenuBar(context: context,isAuthenticated: false,),
       body: SafeArea(child: Center(
         child: Container(
@@ -264,7 +252,7 @@ class _InitialScreenState extends State<InitialScreen> with TickerProviderStateM
                             Container(
                               height: 30,
                               padding: EdgeInsets.only(left: mediaWidth*0.02,right: mediaWidth*0.01),
-                              margin: EdgeInsets.only(top: 10,bottom: 100),
+                              // margin: EdgeInsets.only(top: 10,bottom: 100),
                               child: TextButton(
                                 //onPressed: () => Get.to(WebSignIn()),
                                 onPressed: () => Get.toNamed("/WebSignIn"),
@@ -361,55 +349,53 @@ class _InitialScreenState extends State<InitialScreen> with TickerProviderStateM
                       ),
                     ),
                     //SizedBox(width: MediaQuery.of(context).size.width*0.01,),
-                    mediaWidth>710?Flexible(
-                      child: Container(
-                        width: mediaWidth*0.3,
-                        margin: EdgeInsets.only(left: mediaWidth*0.01),
-                        child: ListView.builder(
-                            physics: BouncingScrollPhysics(),
-                            shrinkWrap: true,
-                            //padding: EdgeInsetsGeometry.infinity,
-                            itemCount: recentPostDetail!.length,
-                            itemBuilder: (context,index){
-                              return Container(
-                                color: Colors.white,
-                                margin: EdgeInsets.only(top: 5),
-                                padding: index==0?EdgeInsets.only(bottom: 5):EdgeInsets.symmetric(vertical: 5),
-                                child: Column(
-                                  children: [
-                                    index==0?Container(
-                                      height: 5,
-                                      width: mediaWidth*0.2,
-                                      color: Color(0xFFF8F8FA),
-                                    ):SizedBox(),
-                                    index==0?Container(
-                                      margin: EdgeInsets.symmetric(vertical: 5),
+                    mediaWidth>710?Container(
+                      width: mediaWidth*0.2,
+                      margin: EdgeInsets.only(left: mediaWidth*0.01),
+                      child: ListView.builder(
+                          physics: BouncingScrollPhysics(),
+                          shrinkWrap: true,
+                          //padding: EdgeInsetsGeometry.infinity,
+                          itemCount: recentPostDetail!.length,
+                          itemBuilder: (context,index){
+                            return Container(
+                              color: Colors.white,
+                              margin: EdgeInsets.only(top: 5),
+                              padding: index==0?EdgeInsets.only(bottom: 5):EdgeInsets.symmetric(vertical: 5),
+                              child: Column(
+                                children: [
+                                  index==0?Container(
+                                    height: 5,
+                                    width: mediaWidth*0.2,
+                                    color: Color(0xFFF8F8FA),
+                                  ):SizedBox(),
+                                  index==0?Container(
+                                    margin: EdgeInsets.symmetric(vertical: 5),
+                                    child: Text(
+                                      isLanguage?AppData().language!.recentPosts:'Recent Posts',
+                                      maxLines: 1,
+                                      style: openSansBold.copyWith(fontSize: Dimensions.fontSizeExtraSmall,color: Colors.black,overflow: TextOverflow.ellipsis),
+                                    ),
+                                  ):SizedBox(),
+                                  UserInfo(postDetail: recentPostDetail![index]),
+                                  Align(
+                                    alignment:Alignment.topLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
                                       child: Text(
-                                        isLanguage?AppData().language!.recentPosts:'Recent Posts',
-                                        maxLines: 1,
-                                        style: openSansBold.copyWith(fontSize: Dimensions.fontSizeExtraSmall,color: Colors.black,overflow: TextOverflow.ellipsis),
-                                      ),
-                                    ):SizedBox(),
-                                    UserInfo(postDetail: recentPostDetail![index]),
-                                    Align(
-                                      alignment:Alignment.topLeft,
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                        child: Text(
-                                          recentPostDetail![index].title??'',
-                                          maxLines: 2,
-                                          style: openSansRegular.copyWith(fontSize: Dimensions.fontSizeExtraSmall,color: Colors.black,overflow: TextOverflow.ellipsis),
-                                        ),
+                                        recentPostDetail![index].title??'',
+                                        maxLines: 2,
+                                        style: openSansRegular.copyWith(fontSize: Dimensions.fontSizeExtraSmall,color: Colors.black,overflow: TextOverflow.ellipsis),
                                       ),
                                     ),
-                                  ],
-                                ),
-                              );
+                                  ),
+                                ],
+                              ),
+                            );
 
-                            }
-                        )
-                        //child: postDetail!=null?UserInfo(postDetail: postDetail!.first):SizedBox(),
-                      ),
+                          }
+                      )
+                      //child: postDetail!=null?UserInfo(postDetail: postDetail!.first):SizedBox(),
                     ):SizedBox(),
                   ],
                 ),
@@ -683,37 +669,5 @@ class _InitialScreenState extends State<InitialScreen> with TickerProviderStateM
     }
 
 
-  }
-}
-
-void showSnackBar(BuildContext context) {
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-
-    content: const Text('If you are using mobile'),
-    backgroundColor:  Colors.black,
-    behavior: SnackBarBehavior.floating,
-    duration: const Duration(minutes: 5),
-    action: SnackBarAction(
-        label: 'Go to Play Store',
-        textColor: Colors.white,
-        onPressed: () async{
-          // StoreRedirect.redirect(
-          //   androidAppId: 'com.knaw.app',
-          // );
-
-          _launchDeveloperPage();
-
-          print('Done pressed!');
-        }),
-  ));
-
-}
-
-_launchDeveloperPage() async {
-  const url = 'https://play.google.com/store/apps/details?id=com.knaw.app';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
   }
 }

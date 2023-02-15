@@ -74,31 +74,33 @@ class UserInfo extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.02),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.01),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
 
-                  Wrap(
-                    children: [
-                      Text(postDetail!.postUserName??'',maxLines:1,style: openSansBold.copyWith(fontSize:Dimensions.fontSizeExtraSmall,color:Colors.black),overflow: TextOverflow.ellipsis,),
-                    ],
-                  ),
-
-                  Container(
-                    width: 100,
-                    child: Row(
+                    Wrap(
                       children: [
-                        SvgPicture.asset(Images.clock,width:12,height:12,color: Colors.grey,),
-                        SizedBox(width: 5,),
-                        Expanded(child: Text(postDetail!.timeAgo??'',style: openSansRegular.copyWith(fontSize: 11,color:Colors.black),)),
+                        Text(postDetail!.postUserName??'',maxLines:1,style: openSansBold.copyWith(fontSize:Dimensions.fontSizeExtraSmall,color:Colors.black),overflow: TextOverflow.ellipsis,),
                       ],
                     ),
-                  ),
 
-                ],
+                    Container(
+                      width: 100,
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(Images.clock,width:12,height:12,color: Colors.grey,),
+                          SizedBox(width: 5,),
+                          Expanded(child: Text(postDetail!.timeAgo??'',style: openSansRegular.copyWith(fontSize: 11,color:Colors.black),)),
+                        ],
+                      ),
+                    ),
+
+                  ],
+                ),
               ),
             ),
 

@@ -160,7 +160,7 @@ class _WebProfileState extends State<WebProfile> with TickerProviderStateMixin {
                 ),
                 child: Container(
                   height: 35,
-                  padding: EdgeInsets.all(3),
+                  // padding: EdgeInsets.all(3),
                   width: mediaWidth<500?mediaWidth:mediaWidth*0.7,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),

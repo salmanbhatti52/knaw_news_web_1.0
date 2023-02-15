@@ -1,12 +1,11 @@
-<IfModule mod_rewrite.c>
-
-  RewriteEngine On
-  RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !-l
-  RewriteRule . /index.html [L]
-
-</IfModule>
-Header set Access-Control-Allow-Origin *
+RewriteEngine On
+# set the base URL prefix
+RewriteBase /
+# for requests for index.html, just respond with the file
+RewriteRule ^index.html$ - [L]
+# if requested path is not a valid filename, continue rewrite
+RewriteCond %{REQUEST_FILENAME} !-f
+# if requested path is not a valid directory, continue rewrite
+RewriteCond %{REQUEST_FILENAME} !-d
+# if you have continue to here, respond with index.html
+RewriteRule . /index.html [L]

@@ -44,8 +44,6 @@ import 'package:knaw_news/view/screens/web/widget/help.dart';
 import 'package:knaw_news/view/screens/web/widget/recent_post.dart';
 import 'package:knaw_news/view/screens/web/widget/user_info.dart';
 import 'package:knaw_news/view/screens/web/widget/web_sidebar.dart';
-import 'package:store_redirect/store_redirect.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 
 class WebHome extends StatefulWidget  {
@@ -94,11 +92,6 @@ class _WebHomeState extends State<WebHome> with TickerProviderStateMixin {
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       loadOtherPosts(isTap: false);
      });
-    // Future.delayed(Duration.zero, () {
-    //   if(GetPlatform.isMobile){
-    //     showSnackBar(context);
-    //   }
-    // });
   }
   @override
   void dispose() {
@@ -308,7 +301,7 @@ class _WebHomeState extends State<WebHome> with TickerProviderStateMixin {
                             Container(
                               height: 30,
                               padding: EdgeInsets.only(left: mediaWidth*0.02,right: mediaWidth*0.01),
-                              margin: EdgeInsets.only(top: 10,bottom: 100),
+                              margin: EdgeInsets.only(top: 10,bottom: 10),
                               child: TextButton(
                                 onPressed: () {
                                   AppData().signOut();
@@ -407,60 +400,58 @@ class _WebHomeState extends State<WebHome> with TickerProviderStateMixin {
                     ),
                     //SizedBox(width: MediaQuery.of(context).size.width*0.01,),
                     mediaWidth>710?SingleChildScrollView(
-                      child: Flexible(
-                        child: Container(
-                            width: mediaWidth*0.3,
-                            margin: EdgeInsets.only(left: mediaWidth*0.01),
-                            child: totalRecentPost>0?ListView.builder(
-                                physics: NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                //padding: EdgeInsetsGeometry.infinity,
-                                itemCount: recentPostDetail!.length,
-                                itemBuilder: (context,index){
-                                  return Container(
-                                    color: Colors.white,
-                                    margin: EdgeInsets.only(top: 5),
-                                    padding: index==0?EdgeInsets.only(bottom: 5):EdgeInsets.symmetric(vertical: 5),
-                                    child: Column(
-                                      children: [
-                                        index==0?Container(
-                                          height: 5,
-                                          width: mediaWidth*0.2,
-                                          color: Color(0xFFF8F8FA),
-                                        ):SizedBox(),
-                                        index==0?Container(
-                                          margin: EdgeInsets.symmetric(vertical: 5),
-                                          child: Text(
-                                            AppData().language!.recentPosts,
-                                            maxLines: 1,
-                                            style: openSansBold.copyWith(fontSize: Dimensions.fontSizeExtraSmall,color: Colors.black,overflow: TextOverflow.ellipsis),
-                                          ),
-                                        ):SizedBox(),
-                                        Center(child: UserInfo(postDetail: recentPostDetail![index])),
-                                        InkWell(
-                                          onTap:(){
-                                            Get.to(RecentPost(postDetail: recentPostDetail![index]));
-                                          },
-                                          child: Align(
-                                            alignment:Alignment.topLeft,
-                                            child: Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                              child: Text(
-                                                recentPostDetail![index].title??'',
-                                                maxLines: 2,
-                                                style: openSansRegular.copyWith(fontSize: Dimensions.fontSizeExtraSmall,color: Colors.black,overflow: TextOverflow.ellipsis),
-                                              ),
+                      child: Container(
+                          width: mediaWidth*0.2,
+                          margin: EdgeInsets.only(left: mediaWidth*0.01),
+                          child: totalRecentPost>0?ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              //padding: EdgeInsetsGeometry.infinity,
+                              itemCount: recentPostDetail!.length,
+                              itemBuilder: (context,index){
+                                return Container(
+                                  color: Colors.white,
+                                  margin: EdgeInsets.only(top: 5),
+                                  padding: index==0?EdgeInsets.only(bottom: 5):EdgeInsets.symmetric(vertical: 5),
+                                  child: Column(
+                                    children: [
+                                      index==0?Container(
+                                        height: 5,
+                                        width: mediaWidth*0.2,
+                                        color: Color(0xFFF8F8FA),
+                                      ):SizedBox(),
+                                      index==0?Container(
+                                        margin: EdgeInsets.symmetric(vertical: 5),
+                                        child: Text(
+                                          AppData().language!.recentPosts,
+                                          maxLines: 1,
+                                          style: openSansBold.copyWith(fontSize: Dimensions.fontSizeExtraSmall,color: Colors.black,overflow: TextOverflow.ellipsis),
+                                        ),
+                                      ):SizedBox(),
+                                      UserInfo(postDetail: recentPostDetail![index]),
+                                      InkWell(
+                                        onTap:(){
+                                          Get.to(RecentPost(postDetail: recentPostDetail![index]));
+                                        },
+                                        child: Align(
+                                          alignment:Alignment.topLeft,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                            child: Text(
+                                              recentPostDetail![index].title??'',
+                                              maxLines: 2,
+                                              style: openSansRegular.copyWith(fontSize: Dimensions.fontSizeExtraSmall,color: Colors.black,overflow: TextOverflow.ellipsis),
                                             ),
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                  );
-                                }
-                            ):
-                            Center(child: NoDataScreen(text: "No Recent Post Found",))
-                          //child: postDetail!=null?UserInfo(postDetail: postDetail!.first):SizedBox(),
-                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }
+                          ):
+                          Center(child: NoDataScreen(text: "No Recent Post Found",))
+                        //child: postDetail!=null?UserInfo(postDetail: postDetail!.first):SizedBox(),
                       ),
                     ):SizedBox(),
                   ],
@@ -777,37 +768,5 @@ class _WebHomeState extends State<WebHome> with TickerProviderStateMixin {
     }else{
       print("error while fetching geoconding data");
     }
-  }
-}
-
-void showSnackBar(BuildContext context) {
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-
-    content: const Text('If you are using mobile'),
-    backgroundColor:  Colors.black,
-    behavior: SnackBarBehavior.floating,
-    duration: const Duration(minutes: 5),
-    action: SnackBarAction(
-        label: 'Go to Play Store',
-        textColor: Colors.white,
-        onPressed: () async{
-          // StoreRedirect.redirect(
-          //   androidAppId: 'com.knaw.app',
-          // );
-
-          _launchDeveloperPage();
-
-          print('Done pressed!');
-        }),
-  ));
-
-}
-
-_launchDeveloperPage() async {
-  const url = 'https://play.google.com/store/apps/details?id=com.knaw.app';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
   }
 }

@@ -34,9 +34,9 @@ class UserInfo extends StatelessWidget {
               Get.toNamed("/WebSignIn");
             }
           }
-          if(GetPlatform.isMobile){
+          else if(GetPlatform.isDesktop==false){
             if(AppData().isAuthenticated){
-              AppData().userdetail!.usersId==postDetail!.usersId?Get.toNamed("/ProfileScreen"):Get.to(() => FollowProfile(userId: postDetail!.usersId,));
+              AppData().userdetail!.usersId==postDetail!.usersId?Get.toNamed("/Profile"):Get.to(() => FollowProfile(userId: postDetail!.usersId,));
             }
             else{
               Get.toNamed("/SignInScreen");
