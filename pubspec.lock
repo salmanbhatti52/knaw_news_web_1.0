@@ -45,10 +45,10 @@ packages:
     dependency: transitive
     description:
       name: args
-      sha256: "139d809800a412ebb26a3892da228b2d0ba36f0ef5d9a82166e5e52ec8d61611"
+      sha256: "4cab82a83ffef80b262ddedf47a0a8e56ee6fbf7fe21e6e768b02792034dd440"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.2"
+    version: "2.4.0"
   async:
     dependency: transitive
     description:
@@ -101,10 +101,10 @@ packages:
     dependency: "direct overridden"
     description:
       name: build_runner
-      sha256: b0a8a7b8a76c493e85f1b84bffa0588859a06197863dba8c9036b15581fd9727
+      sha256: a3335cae313ea41f193e5637f98185e5cb37b3fde2c5c4654ac546b8164e59ac
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.3"
+    version: "2.4.0"
   build_runner_core:
     dependency: transitive
     description:
@@ -386,10 +386,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_facebook_auth_platform_interface
-      sha256: aaf0aaa0d707971c197bf26dd2e53a6d392e546e44a2d3d4df65d57d72e75acd
+      sha256: "06b27d024cff8093e0ed6f8067d43f9451610ca23845d1ad5ddf12f7e43904e3"
       url: "https://pub.dev"
     source: hosted
-    version: "2.8.0"
+    version: "2.7.1"
   flutter_facebook_auth_web:
     dependency: transitive
     description:
@@ -612,10 +612,10 @@ packages:
     dependency: transitive
     description:
       name: google_sign_in_android
-      sha256: "197228076289e506d281328c6846b5986d929d316fc1d2c92a88bb13784faccc"
+      sha256: "612bf44d5de01f32bf127ea1c8114281075c7a39f621d1e34cf70aa069840c5c"
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.5"
+    version: "6.1.6"
   google_sign_in_dartio:
     dependency: "direct main"
     description:
@@ -956,10 +956,10 @@ packages:
     dependency: transitive
     description:
       name: path_provider_linux
-      sha256: ab0987bf95bc591da42dffb38c77398fc43309f0b9b894dcc5d6f40c4b26c379
+      sha256: "2e32f1640f07caef0d3cb993680f181c79e54a3827b997d5ee221490d131fbd9"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.7"
+    version: "2.1.8"
   path_provider_platform_interface:
     dependency: transitive
     description:
@@ -1261,6 +1261,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
+  store_redirect:
+    dependency: "direct main"
+    description:
+      name: store_redirect
+      sha256: "0f00455cc7e3ea896daac5db45fca3a09560eb7ba53a79533df3b80506047286"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   stream_channel:
     dependency: transitive
     description:
@@ -1457,10 +1465,10 @@ packages:
     dependency: transitive
     description:
       name: xdg_directories
-      sha256: bd512f03919aac5f1313eb8249f223bacf4927031bf60b02601f81f687689e86
+      sha256: ee1505df1426458f7f60aac270645098d318a8b4766d85fde75f76f2e21807d1
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0+3"
+    version: "1.0.0"
   xml:
     dependency: transitive
     description:

@@ -57,6 +57,8 @@ dependencies:
   expandable_text_widget: ^0.0.7
   url_strategy: ^0.2.0
   translator: ^0.1.7
+  store_redirect: ^2.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

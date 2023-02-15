@@ -75,7 +75,7 @@ class UserInfo extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.01),
+              padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.02),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,

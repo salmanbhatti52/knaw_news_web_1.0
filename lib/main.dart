@@ -21,6 +21,7 @@ import 'package:knaw_news/view/screens/home/home.dart';
 import 'package:knaw_news/view/screens/home/initial.dart';
 import 'package:knaw_news/view/screens/inbox/web_inbox.dart';
 import 'package:knaw_news/view/screens/post/create_post_on_web.dart';
+import 'package:knaw_news/view/screens/profile/profile_screen.dart';
 import 'package:knaw_news/view/screens/profile/web/web_follow_profile.dart';
 import 'package:knaw_news/view/screens/profile/web/web_profile.dart';
 import 'package:knaw_news/view/screens/search/web_search.dart';
@@ -49,7 +50,7 @@ void main() async{
   // ),
   await Firebase.initializeApp(
     // Replace with actual values
-    options: FirebaseOptions(
+    options: const FirebaseOptions(
       apiKey: "XXX",
       appId: "XXX",
       messagingSenderId: "XXX",
@@ -73,9 +74,14 @@ class MyApp extends StatelessWidget {
       scrollBehavior: MyCustomScrollBehavior().copyWith(scrollbars: false),
       theme: light,
       routes: {
-        "/" : (context) => GetPlatform.isDesktop?AppData().isAuthenticated?WebHome():InitialScreen():AppData().isAuthenticated?HomeScreen():Initial(),
+        "/" : (context) =>
+        // AppData().isAuthenticated?WebHome()
+        //     :InitialScreen(),
+        GetPlatform.isDesktop?AppData().isAuthenticated?WebHome()
+            :InitialScreen():AppData().isAuthenticated?HomeScreen():Initial(),
         "/WebHome": (context) => WebHome(),
         "/WebProfile": (context) => WebProfile(),
+        "/ProfileScreen": (context) => ProfileScreen(),
         "/WebSearch": (context) => WebSearch(),
         "/WebFollowProfile": (context) => WebFollowProfile(userId: int.tryParse(Get.parameters['id']??'0'),),
         "/ProfileSetting": (context) => ProfileSetting(),

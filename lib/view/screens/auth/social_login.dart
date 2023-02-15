@@ -82,46 +82,46 @@ class _SocialLoginState extends State<SocialLogin> {
                     ]),
                   ),
                 ),
-                SizedBox(height: 15),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.blueAccent,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  height: 45,
-                  width: MediaQuery.of(context).size.width*0.75,
-                  child: TextButton(
-                    onPressed: () => signinWithFacebook(),
-                    child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      Image.asset(Images.facebook, width: 40,),
-                      SizedBox(width: 5,),
-                      Text(AppData().language!.signInWithFacebook, textAlign: TextAlign.center, style: openSansBold.copyWith(
-                        color: textBtnColor,
-                        fontSize: Dimensions.fontSizeDefault,
-                      )),
-                    ]),
-                  ),
-                ),
-                SizedBox(height: 15),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  height: 45,
-                  width: MediaQuery.of(context).size.width*0.75,
-                  child: TextButton(
-                    onPressed: () => signinWithGoogle(),
-                    child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      Image.asset(Images.google, width: 20,),
-                      SizedBox(width: 20,),
-                      Text(AppData().language!.signInWithGoogle, textAlign: TextAlign.center, style: openSansBold.copyWith(
-                        color: textBtnColor,
-                        fontSize: Dimensions.fontSizeDefault,
-                      )),
-                    ]),
-                  ),
-                ),
+                // SizedBox(height: 15),
+                // Container(
+                //   decoration: BoxDecoration(
+                //     color: Colors.blueAccent,
+                //     borderRadius: BorderRadius.circular(5),
+                //   ),
+                //   height: 45,
+                //   width: MediaQuery.of(context).size.width*0.75,
+                //   child: TextButton(
+                //     onPressed: () => signinWithFacebook(),
+                //     child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                //       Image.asset(Images.facebook, width: 40,),
+                //       SizedBox(width: 5,),
+                //       Text(AppData().language!.signInWithFacebook, textAlign: TextAlign.center, style: openSansBold.copyWith(
+                //         color: textBtnColor,
+                //         fontSize: Dimensions.fontSizeDefault,
+                //       )),
+                //     ]),
+                //   ),
+                // ),
+                // SizedBox(height: 15),
+                // Container(
+                //   decoration: BoxDecoration(
+                //     color: Colors.red,
+                //     borderRadius: BorderRadius.circular(5),
+                //   ),
+                //   height: 45,
+                //   width: MediaQuery.of(context).size.width*0.75,
+                //   child: TextButton(
+                //     onPressed: () => signinWithGoogle(),
+                //     child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                //       Image.asset(Images.google, width: 20,),
+                //       SizedBox(width: 20,),
+                //       Text(AppData().language!.signInWithGoogle, textAlign: TextAlign.center, style: openSansBold.copyWith(
+                //         color: textBtnColor,
+                //         fontSize: Dimensions.fontSizeDefault,
+                //       )),
+                //     ]),
+                //   ),
+                // ),
               ]),
             ),
           ),

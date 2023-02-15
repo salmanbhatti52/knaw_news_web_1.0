@@ -99,25 +99,25 @@ class _InitialState extends State<Initial> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     print("setState called");
     return Scaffold(
-      drawer: new MyDrawer(),
+      // drawer: new MyDrawer(),
       appBar: CustomAppBar(leading: Images.menu,title: Images.logo_name,isSuffix: false,),
-      bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
-        child: BottomAppBar(
-          child: Padding(
-            padding: EdgeInsets.all(0),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  BottomNavItem(iconData: Images.home,isSelected: false, onTap: () => Get.to(AuthScreen())),
-                  BottomNavItem(iconData: Images.search, isSelected: false , onTap: () => Get.to(AuthScreen())),
-                  BottomNavItem(iconData: Images.add,isSelected: false, onTap: () => Get.to(AuthScreen())),
-                  BottomNavItem(iconData: Images.user,isSelected: false, onTap: () => Get.to(AuthScreen())),
-                ]),
-          ),
-        ),
-      ),
+      // bottomNavigationBar: ClipRRect(
+      //   borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+      //   child: BottomAppBar(
+      //     child: Padding(
+      //       padding: EdgeInsets.all(0),
+      //       child: Row(
+      //           mainAxisAlignment: MainAxisAlignment.center,
+      //           crossAxisAlignment: CrossAxisAlignment.center,
+      //           children: [
+      //             BottomNavItem(iconData: Images.home,isSelected: false, onTap: () => Get.to(AuthScreen())),
+      //             BottomNavItem(iconData: Images.search, isSelected: false , onTap: () => Get.to(AuthScreen())),
+      //             BottomNavItem(iconData: Images.add,isSelected: false, onTap: () => Get.to(AuthScreen())),
+      //             BottomNavItem(iconData: Images.user,isSelected: false, onTap: () => Get.to(AuthScreen())),
+      //           ]),
+      //     ),
+      //   ),
+      // ),
       body: SafeArea(child: Center(
         child: Container(
           child: Column(

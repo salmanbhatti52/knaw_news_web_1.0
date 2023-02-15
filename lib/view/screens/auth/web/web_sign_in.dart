@@ -57,220 +57,231 @@ class _WebSignInState extends State<WebSignIn> {
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
-            child: Center(
-              child: Container(
-                width: size.width>750?size.width*0.5:size.width,
-                child: Column(
-                    children: [
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 30),
+                  child: IconButton(onPressed: (){
+                    Navigator.pop(context);
+                  }, icon: Icon(Icons.arrow_back,size: 35,)),
+                ),
+                Center(
+                  child: Container(
+                    width: size.width>750?size.width*0.5:size.width,
+                    child: Column(
+                        children: [
 
 
 
-                      Container(
-                        alignment: Alignment.centerLeft,
-                          child: Text(isLanguage?"${AppData().language!.hey}, \n${AppData().language!.loginNow}":'Hey, \nLogin Now', style: openSansBold.copyWith(fontSize: 25)),
-                      ),
+                          Container(
+                            alignment: Alignment.centerLeft,
+                              child: Text(isLanguage?"${AppData().language!.hey}, \n${AppData().language!.loginNow}":'Hey, \nLogin Now', style: openSansBold.copyWith(fontSize: 25)),
+                          ),
 
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Container(
-                          width: 300,
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            isLanguage?AppData().language!.enterNameAndPass:"Enter your username and password to log in",
-                            style: openSansMedium.copyWith(color: textColor,fontSize: Dimensions.fontSizeDefault,),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: Container(
+                              width: 300,
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                isLanguage?AppData().language!.enterNameAndPass:"Enter your username and password to log in",
+                                style: openSansMedium.copyWith(color: textColor,fontSize: Dimensions.fontSizeDefault,),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10),
+
+                          Container(
+                            width: MediaQuery.of(context).size.width*0.8,
+                            child: Column(children: [
+
+                              TextField(
+                                onChanged: (value)=> profile.userName=value,
+                                style: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall,color: textColor),
+                                keyboardType: TextInputType.text,
+                                cursorColor: Theme.of(context).primaryColor,
+                                autofocus: false,
+                                decoration: InputDecoration(
+                                  focusColor: const Color(0XF7F7F7),
+                                  hoverColor: const Color(0XF7F7F7),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
+                                    borderSide: const BorderSide(style: BorderStyle.none, width: 0),
+                                  ),
+                                  isDense: true,
+                                  hintText: isLanguage?AppData().language!.userName:"User name",
+                                  fillColor: Color(0XBBF0F0F0),
+                                  hintStyle: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
+                                  filled: true,
+
+                                  prefixIcon: Padding(
+                                    padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+                                    child: SvgPicture.asset(Images.user_name, height: 15, width: 15,color: Colors.black),
+                                  ),
+                                ),
+                              ),
+
+                              SizedBox(height: 5,),
+
+                              TextField(
+                                onChanged: (value)=> profile.userPassword=value,
+                                style: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall,color: textColor),
+                                keyboardType: TextInputType.text,
+                                cursorColor: Theme.of(context).primaryColor,
+                                focusNode: _passwordFocus,
+                                autofocus: false,
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                  focusColor: const Color(0XF7F7F7),
+                                  hoverColor: const Color(0XF7F7F7),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
+                                    borderSide: const BorderSide(style: BorderStyle.none, width: 0),
+                                  ),
+                                  isDense: true,
+                                  hintText: isLanguage?AppData().language!.password:"Password",
+                                  fillColor: Color(0XBBF0F0F0),
+                                  hintStyle: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
+                                  filled: true,
+
+                                  prefixIcon: Padding(
+                                    padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+                                    child: SvgPicture.asset(Images.lock, height: 15, width: 15,color: Colors.black),
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                  children: [
+                                Expanded(
+                                  child: ListTile(
+                                    minLeadingWidth: 0,
+                                    hoverColor: null,
+                                    focusColor: null,
+                                    selectedTileColor: null,
+                                    tileColor: null,
+                                    leading: Checkbox(
+                                      side: BorderSide(color: Colors.red,width: 2),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5)
+                                      ),
+                                      checkColor: Colors.white,
+                                      activeColor: Colors.red,
+                                      value: isChecked,
+                                      onChanged: (val) => setState(() {
+                                        isChecked=val!;
+                                      }),
+                                    ),
+                                    title: Text(isLanguage?AppData().language!.rememberMe:'Remember me',style: openSansRegular.copyWith(fontSize:Dimensions.fontSizeDefault,color: textColor),),
+                                    contentPadding: EdgeInsets.zero,
+                                    dense: true,
+                                    horizontalTitleGap: 0,
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    //Get.to(() => ForgetPassword());
+                                    if(isLanguage)Get.toNamed("/ForgetPassword");
+                                  },
+                                  child: Text(isLanguage?AppData().language!.forgotPassword:'Forgot Password?',
+                                    style: openSansMedium.copyWith(fontSize: Dimensions.fontSizeDefault,color: Colors.red),
+                                  ),
+                                ),
+                              ]),
+                            ]),
+                          ),
+                          SizedBox(height: 5),
+
+                          SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
+
+                          Container(
+                          height: 45,
+                          width: size.width>750?size.width*0.3:size.width*0.5,
+                          child: TextButton(
+                            onPressed: () => isLanguage?_login():null,
+                            style: flatButtonStyle,
+                            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                              Text(isLanguage?AppData().language!.loginNow:"Login Now", textAlign: TextAlign.center, style: openSansBold.copyWith(
+                                color: textBtnColor,
+                                fontSize: Dimensions.fontSizeDefault,
+                              )),
+                            ]),
                           ),
                         ),
-                      ),
-                      SizedBox(height: 10),
-
-                      Container(
-                        width: MediaQuery.of(context).size.width*0.8,
-                        child: Column(children: [
-
-                          TextField(
-                            onChanged: (value)=> profile.userName=value,
-                            style: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall,color: textColor),
-                            keyboardType: TextInputType.text,
-                            cursorColor: Theme.of(context).primaryColor,
-                            autofocus: false,
-                            decoration: InputDecoration(
-                              focusColor: const Color(0XF7F7F7),
-                              hoverColor: const Color(0XF7F7F7),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
-                                borderSide: const BorderSide(style: BorderStyle.none, width: 0),
-                              ),
-                              isDense: true,
-                              hintText: isLanguage?AppData().language!.userName:"User name",
-                              fillColor: Color(0XBBF0F0F0),
-                              hintStyle: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
-                              filled: true,
-
-                              prefixIcon: Padding(
-                                padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
-                                child: SvgPicture.asset(Images.user_name, height: 15, width: 15,color: Colors.black),
-                              ),
-                            ),
+                        SizedBox(height: 10),
+                        Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          isLanguage?AppData().language!.oR:"OR",
+                          style: openSansMedium.copyWith(color: textColor,fontSize: Dimensions.fontSizeDefault,),
+                        ),
+                        ),
+                        SizedBox(height: 10),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //   children: [
+                        //     Container(
+                        //       height: 45,
+                        //       width: size.width>750?size.width*0.24:size.width*0.45,
+                        //       decoration: BoxDecoration(
+                        //         color: Colors.blueAccent,
+                        //         borderRadius: BorderRadius.circular(5),
+                        //       ),
+                        //       child: TextButton(
+                        //         onPressed: () => isLanguage?signinWithFacebook():null,
+                        //         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                        //           Image.asset(Images.facebook, width: 30,),
+                        //           SizedBox(width: 5,),
+                        //           Text("SIGN IN WITH FACEBOOK", textAlign: TextAlign.center, style: openSansBold.copyWith(
+                        //             color: textBtnColor,
+                        //               fontSize: size.width<1000&&size.width>750?Dimensions.fontSizeExtraSmall:Dimensions.fontSizeSmall,
+                        //             overflow: TextOverflow.ellipsis
+                        //           )),
+                        //         ]),
+                        //       ),
+                        //     ),
+                        //     SizedBox(height: 5),
+                        //     Container(
+                        //       height: 45,
+                        //       width: size.width>750?size.width*0.24:size.width*0.45,
+                        //       decoration: BoxDecoration(
+                        //         color: Colors.red,
+                        //         borderRadius: BorderRadius.circular(5),
+                        //       ),
+                        //       child: TextButton(
+                        //         onPressed: () => isLanguage?signinWithGoogle():null,
+                        //         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                        //           Image.asset(Images.google, width: 20,),
+                        //           SizedBox(width: 20,),
+                        //           Text("SIGN IN WITH GOOGLE", textAlign: TextAlign.center, style: openSansBold.copyWith(
+                        //             color: textBtnColor,
+                        //             fontSize: size.width<1000&&size.width>750?Dimensions.fontSizeExtraSmall:Dimensions.fontSizeSmall,
+                        //           )),
+                        //         ]),
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
+                        SizedBox(height: 20),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            minimumSize: Size(1, 40),
                           ),
+                          onPressed: () {
 
-                          SizedBox(height: 5,),
+                            if(isLanguage)Get.toNamed("/WebSignUp");
+                          },
+                          child: RichText(text: TextSpan(children: [
+                            TextSpan(text: isLanguage?AppData().language!.iAmNewUser:"I'm a new user ", style: openSansSemiBold.copyWith(color: textColor,fontSize: Dimensions.fontSizeSmall)),
+                            TextSpan(text: isLanguage?AppData().language!.signUp:'Sign Up', style: openSansBold.copyWith(color: Colors.red,fontSize: Dimensions.fontSizeSmall,decoration: TextDecoration.underline,decorationThickness: 4)),
+                          ])),
+                        ),
 
-                          TextField(
-                            onChanged: (value)=> profile.userPassword=value,
-                            style: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall,color: textColor),
-                            keyboardType: TextInputType.text,
-                            cursorColor: Theme.of(context).primaryColor,
-                            focusNode: _passwordFocus,
-                            autofocus: false,
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              focusColor: const Color(0XF7F7F7),
-                              hoverColor: const Color(0XF7F7F7),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
-                                borderSide: const BorderSide(style: BorderStyle.none, width: 0),
-                              ),
-                              isDense: true,
-                              hintText: isLanguage?AppData().language!.password:"Password",
-                              fillColor: Color(0XBBF0F0F0),
-                              hintStyle: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
-                              filled: true,
-
-                              prefixIcon: Padding(
-                                padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
-                                child: SvgPicture.asset(Images.lock, height: 15, width: 15,color: Colors.black),
-                              ),
-                            ),
-                          ),
-                          Row(
-                              children: [
-                            Expanded(
-                              child: ListTile(
-                                minLeadingWidth: 0,
-                                hoverColor: null,
-                                focusColor: null,
-                                selectedTileColor: null,
-                                tileColor: null,
-                                leading: Checkbox(
-                                  side: BorderSide(color: Colors.red,width: 2),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5)
-                                  ),
-                                  checkColor: Colors.white,
-                                  activeColor: Colors.red,
-                                  value: isChecked,
-                                  onChanged: (val) => setState(() {
-                                    isChecked=val!;
-                                  }),
-                                ),
-                                title: Text(isLanguage?AppData().language!.rememberMe:'Remember me',style: openSansRegular.copyWith(fontSize:Dimensions.fontSizeDefault,color: textColor),),
-                                contentPadding: EdgeInsets.zero,
-                                dense: true,
-                                horizontalTitleGap: 0,
-                              ),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                //Get.to(() => ForgetPassword());
-                                if(isLanguage)Get.toNamed("/ForgetPassword");
-                              },
-                              child: Text(isLanguage?AppData().language!.forgotPassword:'Forgot Password?',
-                                style: openSansMedium.copyWith(fontSize: Dimensions.fontSizeDefault,color: Colors.red),
-                              ),
-                            ),
-                          ]),
-                        ]),
-                      ),
-                      SizedBox(height: 5),
-
-                      SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
-
-                      Container(
-                      height: 45,
-                      width: size.width>750?size.width*0.3:size.width*0.5,
-                      child: TextButton(
-                        onPressed: () => isLanguage?_login():null,
-                        style: flatButtonStyle,
-                        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                          Text(isLanguage?AppData().language!.loginNow:"Login Now", textAlign: TextAlign.center, style: openSansBold.copyWith(
-                            color: textBtnColor,
-                            fontSize: Dimensions.fontSizeDefault,
-                          )),
-                        ]),
-                      ),
+                      ]),
                     ),
-                    SizedBox(height: 10),
-                    Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      isLanguage?AppData().language!.oR:"OR",
-                      style: openSansMedium.copyWith(color: textColor,fontSize: Dimensions.fontSizeDefault,),
-                    ),
-                    ),
-                    SizedBox(height: 10),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //   children: [
-                    //     Container(
-                    //       height: 45,
-                    //       width: size.width>750?size.width*0.24:size.width*0.45,
-                    //       decoration: BoxDecoration(
-                    //         color: Colors.blueAccent,
-                    //         borderRadius: BorderRadius.circular(5),
-                    //       ),
-                    //       child: TextButton(
-                    //         onPressed: () => isLanguage?signinWithFacebook():null,
-                    //         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    //           Image.asset(Images.facebook, width: 30,),
-                    //           SizedBox(width: 5,),
-                    //           Text("SIGN IN WITH FACEBOOK", textAlign: TextAlign.center, style: openSansBold.copyWith(
-                    //             color: textBtnColor,
-                    //               fontSize: size.width<1000&&size.width>750?Dimensions.fontSizeExtraSmall:Dimensions.fontSizeSmall,
-                    //             overflow: TextOverflow.ellipsis
-                    //           )),
-                    //         ]),
-                    //       ),
-                    //     ),
-                    //     SizedBox(height: 5),
-                    //     Container(
-                    //       height: 45,
-                    //       width: size.width>750?size.width*0.24:size.width*0.45,
-                    //       decoration: BoxDecoration(
-                    //         color: Colors.red,
-                    //         borderRadius: BorderRadius.circular(5),
-                    //       ),
-                    //       child: TextButton(
-                    //         onPressed: () => isLanguage?signinWithGoogle():null,
-                    //         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    //           Image.asset(Images.google, width: 20,),
-                    //           SizedBox(width: 20,),
-                    //           Text("SIGN IN WITH GOOGLE", textAlign: TextAlign.center, style: openSansBold.copyWith(
-                    //             color: textBtnColor,
-                    //             fontSize: size.width<1000&&size.width>750?Dimensions.fontSizeExtraSmall:Dimensions.fontSizeSmall,
-                    //           )),
-                    //         ]),
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-                    SizedBox(height: 20),
-                    TextButton(
-                      style: TextButton.styleFrom(
-                        minimumSize: Size(1, 40),
-                      ),
-                      onPressed: () {
-
-                        if(isLanguage)Get.toNamed("/WebSignUp");
-                      },
-                      child: RichText(text: TextSpan(children: [
-                        TextSpan(text: isLanguage?AppData().language!.iAmNewUser:"I'm a new user ", style: openSansSemiBold.copyWith(color: textColor,fontSize: Dimensions.fontSizeSmall)),
-                        TextSpan(text: isLanguage?AppData().language!.signUp:'Sign Up', style: openSansBold.copyWith(color: Colors.red,fontSize: Dimensions.fontSizeSmall,decoration: TextDecoration.underline,decorationThickness: 4)),
-                      ])),
-                    ),
-
-                  ]),
-                ),
-              ),
+                  ),
+              ],
+            ),
             ),
           ),),
       ),

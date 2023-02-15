@@ -46,7 +46,7 @@ class _MyDrawerState extends State<MyDrawer> {
           children: [
 
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.amber,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(10),
@@ -55,7 +55,7 @@ class _MyDrawerState extends State<MyDrawer> {
               child: Center(
                 child: Column(
                   children: [
-                    SizedBox(height: 40),
+                    const SizedBox(height: 40),
                     Stack(
                       children: [
                         ClipOval(
@@ -89,7 +89,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             DrawerItems(icon: Images.inbox, title: AppData().language!.inbox, onTap: () => Get.to(InboxScreen())),
             DrawerItems(icon: Images.bookmark, title: AppData().language!.bookmarkPosts, onTap: () => Get.to(ProfileScreen(index: 1,))),
             DrawerItems(icon: Images.mynews, title: AppData().language!.myKnawNews, onTap: () => Get.to(ProfileScreen(index: 0,))),
@@ -106,7 +106,7 @@ class _MyDrawerState extends State<MyDrawer> {
               ),
             ),
             DrawerItems(icon: Images.logout, title: AppData().language!.logout,isLogout: true, onTap: () {AppData().signOut();Get.offAll(() => SocialLogin());}),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
 
 
 

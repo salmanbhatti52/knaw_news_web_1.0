@@ -28,23 +28,28 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:expandable_text_widget/expandable_text_widget.dart';
 import 'package:translator/translator.dart';
 
-
+import '../../auth/auth_screen.dart';
+import '../../auth/sign_in_screen.dart';
 
 class FullTransition extends StatefulWidget {
   PostDetail? postDetail;
-  FullTransition({Key? key, this.postDetail,}) : super(key: key);
+  FullTransition({
+    Key? key,
+    this.postDetail,
+  }) : super(key: key);
 
   @override
   State<FullTransition> createState() => _FullTransitionState();
 }
 
 class _FullTransitionState extends State<FullTransition> {
-  bool isComment=false;
-  bool isReadMore=false;
+  bool isComment = false;
+  bool isReadMore = false;
   _launchURL(String _url) async {
     html.window.open(_url, '_blank');
     //if (!await launch(_url,universalLinksOnly: true,forceWebView: true,enableJavaScript: true)) throw 'Could not launch $_url';
   }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -54,12 +59,14 @@ class _FullTransitionState extends State<FullTransition> {
       translate();
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Wrap(
       children: [
         Container(
-          width: MediaQuery.of(context).size.width*0.9,
+          width: MediaQuery.of(context).size.width / 2,
+
           //padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.03),
           margin: EdgeInsets.only(top: 10),
           decoration: BoxDecoration(
@@ -69,79 +76,120 @@ class _FullTransitionState extends State<FullTransition> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // User Detail
-              UserInfo(postDetail: widget.postDetail,),
+              UserInfo(
+                postDetail: widget.postDetail,
+              ),
               // Headline
               Container(
-                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.01,),
-                width: MediaQuery.of(context).size.width*0.9,
+                padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.01,
+                ),
+                width: MediaQuery.of(context).size.width * 0.9,
                 child: ListView(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   children: [
-                    Wrap(
-                        children:[
-                          Text(widget.postDetail!.title??'',maxLines:2,style: openSansSemiBold.copyWith(fontSize:Dimensions.fontSizeDefault,color:Colors.black),),
-                          //postDetail!.description!.length<100?postDetail!.description!+"\n":
-                        ]),
+                    Wrap(children: [
+                      Text(
+                        widget.postDetail!.title ?? '',
+                        maxLines: 2,
+                        style: openSansSemiBold.copyWith(
+                            fontSize: Dimensions.fontSizeDefault,
+                            color: Colors.black),
+                      ),
+                      //postDetail!.description!.length<100?postDetail!.description!+"\n":
+                    ]),
                   ],
                 ),
               ),
               // post Date
               Padding(
-                padding: EdgeInsets.only(left: GetPlatform.isDesktop? MediaQuery.of(context).size.width*0.01: 8.0),
-                child: Text(widget.postDetail!.category=='Events'&&widget.postDetail!.eventNewsStartDate!=null&&widget.postDetail!.eventNewsEndDate!=null?widget.postDetail!.eventNewsStartDate!+" "+widget.postDetail!.eventNewsEndDate!:widget.postDetail!.createdAt??'',style: openSansRegular.copyWith(fontSize:Dimensions.fontSizeSmall,color:Colors.grey),),
+                padding: EdgeInsets.only(
+                    left: GetPlatform.isDesktop
+                        ? MediaQuery.of(context).size.width * 0.01
+                        : 8.0),
+                child: Text(
+                  widget.postDetail!.category == 'Events' &&
+                          widget.postDetail!.eventNewsStartDate != null &&
+                          widget.postDetail!.eventNewsEndDate != null
+                      ? widget.postDetail!.eventNewsStartDate! +
+                          " " +
+                          widget.postDetail!.eventNewsEndDate!
+                      : widget.postDetail!.createdAt ?? '',
+                  style: openSansRegular.copyWith(
+                      fontSize: Dimensions.fontSizeSmall, color: Colors.grey),
+                ),
               ),
 
               // News Description
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: GetPlatform.isDesktop? MediaQuery.of(context).size.width*0.01: 5.0),
+                padding: EdgeInsets.symmetric(
+                    horizontal: GetPlatform.isDesktop
+                        ? MediaQuery.of(context).size.width * 0.01
+                        : 5.0),
                 child: Stack(
-
                   children: [
                     Text(
                       widget.postDetail!.description!,
-                      maxLines: isReadMore?100:3,
-                      style: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall,color: Colors.black,overflow: TextOverflow.clip),
+                      maxLines: isReadMore ? 100 : 3,
+                      style: openSansRegular.copyWith(
+                          fontSize: Dimensions.fontSizeSmall,
+                          color: Colors.black,
+                          overflow: TextOverflow.clip),
                     ),
-                    isReadMore?SizedBox():
-                    Positioned(
-                      bottom: 0,right: 0,
-                        child: Container(
-                          width: GetPlatform.isDesktop?110: 100,
-                          color: Colors.white,
-                          child: InkWell(
-                              onTap: (){
-                                if(AppData().isAuthenticated){
-                                  widget.postDetail!.isViewed!?null:viewPost();
-                                  isReadMore=true;
-                                  setState(() {
-                                  });
-                                }
-                                else{
-                                  GetPlatform.isDesktop?Get.to(WebSignIn()):Get.to(Auth());
-                                }
-
-                              },
-                              child: Text(".....(${AppData().isLanguage?AppData().language!.readMore:"Read More"})",style: openSansBold.copyWith(fontSize: GetPlatform.isDesktop?Dimensions.fontSizeExtraSmall:Dimensions.fontSizeSmall,color: Colors.amber))
-                          ),
-                        )
-                    ),
-
+                    isReadMore
+                        ? SizedBox()
+                        : Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: Container(
+                              width: GetPlatform.isDesktop ? 110 : 100,
+                              color: Colors.white,
+                              child: InkWell(
+                                  onTap: () {
+                                    if (AppData().isAuthenticated) {
+                                      widget.postDetail!.isViewed!
+                                          ? null
+                                          : viewPost();
+                                      isReadMore = true;
+                                      setState(() {});
+                                    } else {
+                                      GetPlatform.isDesktop
+                                          ? Get.to(WebSignIn())
+                                          : Get.to(Auth());
+                                      GetPlatform.isMobile
+                                          ? Get.to(SignInScreen())
+                                          : Get.to(AuthScreen());
+                                    }
+                                  },
+                                  child: Text(
+                                      ".....(${AppData().isLanguage ? AppData().language!.readMore : "Read More"})",
+                                      style: openSansBold.copyWith(
+                                          fontSize: GetPlatform.isDesktop
+                                              ? Dimensions.fontSizeExtraSmall
+                                              : Dimensions.fontSizeSmall,
+                                          color: Colors.amber))),
+                            )),
                   ],
                 ),
               ),
 
-
               Container(
+                height: MediaQuery.of(context).size.height / 1.4,
                 padding: EdgeInsets.symmetric(vertical: 5),
                 child: ClipRRect(
-                  child: widget.postDetail!.postPicture == null || widget.postDetail!.postPicture == "" ?
-                  SizedBox():
-                  Image.network(
-                    //"https://cros-anywhere.herokuapp.com/"+widget.postDetail!.postPicture??'',
-                    widget.postDetail!.postPicture!,
-                    height: GetPlatform.isDesktop?MediaQuery.of(context).size.width*0.2: MediaQuery.of(context).size.height*0.25, width: MediaQuery.of(context).size.width*0.9,fit: BoxFit.cover,
-                  ),
+                  child: widget.postDetail!.postPicture == null ||
+                          widget.postDetail!.postPicture == ""
+                      ? SizedBox()
+                      : Image.network(
+                          //"https://cros-anywhere.herokuapp.com/"+widget.postDetail!.postPicture??'',
+                          widget.postDetail!.postPicture!,
+                          height: GetPlatform.isDesktop
+                              ? MediaQuery.of(context).size.width * 0.2
+                              : MediaQuery.of(context).size.height * 0.25,
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          fit: BoxFit.cover,
+                        ),
                 ),
               ),
               // Action Bar
@@ -149,51 +197,124 @@ class _FullTransitionState extends State<FullTransition> {
                 padding: EdgeInsets.symmetric(horizontal: 5),
                 child: Row(
                   children: [
-                    VerticalTile(icon: widget.postDetail!.category=="Opinion"?widget.postDetail!.isHappyReacted!?Images.like:Images.like_bold:widget.postDetail!.isHappyReacted!?Images.smile_face:Images.smile_face_bold, title: widget.postDetail!.happyReactions.toString(),isBlack: true,onTap: widget.postDetail!.category=="Opinion"?likeOpinion:happyReact,),
+                    VerticalTile(
+                      icon: widget.postDetail!.category == "Opinion"
+                          ? widget.postDetail!.isHappyReacted!
+                              ? Images.like
+                              : Images.like_bold
+                          : widget.postDetail!.isHappyReacted!
+                              ? Images.smile_face
+                              : Images.smile_face_bold,
+                      title: widget.postDetail!.happyReactions.toString(),
+                      isBlack: true,
+                      onTap: widget.postDetail!.category == "Opinion"
+                          ? likeOpinion
+                          : happyReact,
+                    ),
                     Expanded(child: Container()),
-                    VerticalTile(icon: widget.postDetail!.category=="Opinion"?widget.postDetail!.isSadReacted!?Images.dislike:Images.dislike_bold:widget.postDetail!.isSadReacted!?Images.sad_face:Images.sad_face_bold, title: widget.postDetail!.sadReactions.toString(),isBlack: true,onTap: widget.postDetail!.category=="Opinion"?dislikeOpinion:sadReact,),
+                    VerticalTile(
+                      icon: widget.postDetail!.category == "Opinion"
+                          ? widget.postDetail!.isSadReacted!
+                              ? Images.dislike
+                              : Images.dislike_bold
+                          : widget.postDetail!.isSadReacted!
+                              ? Images.sad_face
+                              : Images.sad_face_bold,
+                      title: widget.postDetail!.sadReactions.toString(),
+                      isBlack: true,
+                      onTap: widget.postDetail!.category == "Opinion"
+                          ? dislikeOpinion
+                          : sadReact,
+                    ),
                     Expanded(child: Container()),
-                    VerticalTile(icon: widget.postDetail!.isBookmarked=="true"?Images.bookmark_bold:Images.bookmark, title: AppData().isLanguage?AppData().language!.bookmarks:"Bookmarks",onTap: bookmarkPost,),
+                    VerticalTile(
+                      icon: widget.postDetail!.isBookmarked == "true"
+                          ? Images.bookmark_bold
+                          : Images.bookmark,
+                      title: AppData().isLanguage
+                          ? AppData().language!.bookmarks
+                          : "Bookmarks",
+                      onTap: bookmarkPost,
+                    ),
                     Expanded(child: Container()),
-                    VerticalTile(icon: Images.comment, title: widget.postDetail!.totalComments.toString(),isBlack: true,onTap: (){
-                      //Get.bottomSheet(CommentScreen(postDetail: widget.postDetail,));
-                      isComment=!isComment;
-                      setState(() {
-
-                      });
-                    }),
+                    VerticalTile(
+                        icon: Images.comment,
+                        title: widget.postDetail!.totalComments.toString(),
+                        isBlack: true,
+                        onTap: () {
+                          //Get.bottomSheet(CommentScreen(postDetail: widget.postDetail,));
+                          isComment = !isComment;
+                          setState(() {});
+                        }),
                     Expanded(child: Container()),
-                    widget.postDetail!.externalLink!.isURL?VerticalTile(icon: Images.link, title: AppData().isLanguage?AppData().language!.source:"Source",onTap: () => _launchURL(widget.postDetail!.externalLink!.contains("http")?widget.postDetail!.externalLink!:"http://${widget.postDetail!.externalLink!}"),):SizedBox(),
-                    widget.postDetail!.externalLink!.isURL?Expanded(child: Container()):SizedBox(),
-                    VerticalTile(icon: Images.share, title: AppData().isLanguage?AppData().language!.share:"Share",onTap: (){
-                      Share.share(
-                          "Headline: "+ widget.postDetail!.title!+"\n"+
-                              "Summary: "+widget.postDetail!.description!.substring(0,100)+
+                    widget.postDetail!.externalLink!.isURL
+                        ? VerticalTile(
+                            icon: Images.link,
+                            title: AppData().isLanguage
+                                ? AppData().language!.source
+                                : "Source",
+                            onTap: () => _launchURL(widget
+                                    .postDetail!.externalLink!
+                                    .contains("http")
+                                ? widget.postDetail!.externalLink!
+                                : "http://${widget.postDetail!.externalLink!}"),
+                          )
+                        : SizedBox(),
+                    widget.postDetail!.externalLink!.isURL
+                        ? Expanded(child: Container())
+                        : SizedBox(),
+                    VerticalTile(
+                        icon: Images.share,
+                        title: AppData().isLanguage
+                            ? AppData().language!.share
+                            : "Share",
+                        onTap: () {
+                          Share.share("Headline: " +
+                              widget.postDetail!.title! +
+                              "\n" +
+                              "Summary: " +
+                              widget.postDetail!.description!
+                                  .substring(0, 100) +
                               '\nClick to read more https://play.google.com/store/apps/details?id=com.knawnews.apps&hl=en&gl=US');
-                    }),
+                        }),
                     Expanded(child: Container()),
                     PopupMenuButton(
                         child: Center(
-                            child:  Icon(Icons.more_vert,size:GetPlatform.isDesktop?30: 20,color: Colors.grey.withOpacity(0.5),)
-                        ),
-                        onSelected: (value){
-
-                        },
+                            child: Icon(
+                          Icons.more_vert,
+                          size: GetPlatform.isDesktop ? 30 : 20,
+                          color: Colors.grey.withOpacity(0.5),
+                        )),
+                        onSelected: (value) {},
                         itemBuilder: (context) => [
-                          PopupMenuItem(
+                              PopupMenuItem(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 0, horizontal: 8),
+                                height: 20,
+                                child: InkWell(
+                                  onTap: () {
+                                    AppData().isAuthenticated
+                                        ? Get.dialog(ReportDialog(
+                                            postDetail: widget.postDetail))
+                                        : GetPlatform.isDesktop
+                                            ? Get.toNamed("/WebSignIn")
+                                            : Get.to(Auth());
+                                    AppData().isAuthenticated
+                                        ? Get.dialog(ReportDialog(
+                                            postDetail: widget.postDetail))
+                                        :GetPlatform.isMobile?Get.to(SignInScreen()):Get.to(AuthScreen());
 
-                            padding:const EdgeInsets.symmetric(vertical: 0,horizontal: 8),
-                            height:20,
-                            child: InkWell(
-                              onTap: () => AppData().isAuthenticated?Get.dialog(ReportDialog(postDetail: widget.postDetail)):GetPlatform.isDesktop?Get.toNamed("/WebSignIn"):Get.to(Auth()),
-                              child: Text(AppData().isLanguage?AppData().language!.reportThread:'Report Thread',
-                                style: openSansRegular.copyWith(fontSize: Dimensions.fontSizeSmall),),
-                            ),
-
-
-                          ),
-                        ]
-                    ),
+                                  },
+                                  child: Text(
+                                    AppData().isLanguage
+                                        ? AppData().language!.reportThread
+                                        : 'Report Thread',
+                                    style: openSansRegular.copyWith(
+                                        fontSize: Dimensions.fontSizeSmall),
+                                  ),
+                                ),
+                              ),
+                            ]),
                     //VerticalTile(icon: Images.report, title: "Report",onTap: () => Get.dialog(ReportDialog(postDetail: widget.postDetail,)),),
                   ],
                 ),
@@ -201,7 +322,16 @@ class _FullTransitionState extends State<FullTransition> {
             ],
           ),
         ),
-        isComment?Container(child: GetPlatform.isDesktop?WebComment(postDetail: widget.postDetail,):CommentScreen(postDetail: widget.postDetail,)):SizedBox()
+        isComment
+            ? Container(
+                child: GetPlatform.isDesktop
+                    ? WebComment(
+                        postDetail: widget.postDetail,
+                      )
+                    : CommentScreen(
+                        postDetail: widget.postDetail,
+                      ))
+            : SizedBox()
         //SizedBox(height: 20,),
 
         //Related News
@@ -250,11 +380,13 @@ class _FullTransitionState extends State<FullTransition> {
   }
 
   void translate() async {
-    var translation=await widget.postDetail!.title!.translate(to: AppData().language!.languageCode);
-    var translator=await widget.postDetail!.description!.translate(to: AppData().language!.languageCode);
-    if(mounted){
-      widget.postDetail!.title=translation.text;
-      widget.postDetail!.description=translator.text;
+    var translation = await widget.postDetail!.title!
+        .translate(to: AppData().language!.languageCode);
+    var translator = await widget.postDetail!.description!
+        .translate(to: AppData().language!.languageCode);
+    if (mounted) {
+      widget.postDetail!.title = translation.text;
+      widget.postDetail!.description = translator.text;
       setState(() {});
     }
   }
@@ -263,153 +395,148 @@ class _FullTransitionState extends State<FullTransition> {
     openLoadingDialog(context, "Loading");
     var response;
     response = await DioService.post('bookmark_news_post', {
-      "newsPostId" : widget.postDetail!.newsPostId,
-      "usersId" : AppData().userdetail!.usersId
+      "newsPostId": widget.postDetail!.newsPostId,
+      "usersId": AppData().userdetail!.usersId
     });
-    if(response['status']=='success'){
+    if (response['status'] == 'success') {
       //print(postDetail![0].toJson());
-      widget.postDetail!.isBookmarked=="true"?widget.postDetail!.isBookmarked="false":widget.postDetail!.isBookmarked="true";
+      widget.postDetail!.isBookmarked == "true"
+          ? widget.postDetail!.isBookmarked = "false"
+          : widget.postDetail!.isBookmarked = "true";
       Navigator.pop(context);
-      setState(() {
-
-      });
+      setState(() {});
       // showCustomSnackBar(response['data'],isError: false);
-    }
-    else{
+    } else {
       Navigator.pop(context);
-      setState(() {
-
-      });
+      setState(() {});
       // showCustomSnackBar(response['message']);
-
     }
   }
+
   Future<void> happyReact() async {
     openLoadingDialog(context, "Loading");
     var response;
     response = await DioService.post('react_happy', {
-      "newsPostId" : widget.postDetail!.newsPostId,
-      "usersId" : AppData().userdetail!.usersId
+      "newsPostId": widget.postDetail!.newsPostId,
+      "usersId": AppData().userdetail!.usersId
     });
-    if(response['status']=='success'){
+    if (response['status'] == 'success') {
       //print(postDetail![0].toJson());
-      widget.postDetail!.isHappyReacted!?widget.postDetail!.happyReactions=(widget.postDetail!.happyReactions!-1):widget.postDetail!.happyReactions=(widget.postDetail!.happyReactions!+1);
-      widget.postDetail!.isHappyReacted!?widget.postDetail!.isHappyReacted=false:widget.postDetail!.isHappyReacted=true;
+      widget.postDetail!.isHappyReacted!
+          ? widget.postDetail!.happyReactions =
+              (widget.postDetail!.happyReactions! - 1)
+          : widget.postDetail!.happyReactions =
+              (widget.postDetail!.happyReactions! + 1);
+      widget.postDetail!.isHappyReacted!
+          ? widget.postDetail!.isHappyReacted = false
+          : widget.postDetail!.isHappyReacted = true;
       Navigator.pop(context);
-      setState(() {
-
-      });
+      setState(() {});
       // showCustomSnackBar(response['data'],isError: false);
-    }
-    else{
+    } else {
       Navigator.pop(context);
-      setState(() {
-
-      });
+      setState(() {});
       // showCustomSnackBar(response['message']);
-
     }
   }
+
   Future<void> sadReact() async {
     openLoadingDialog(context, "Loading");
     var response;
     response = await DioService.post('react_sad', {
-      "newsPostId" : widget.postDetail!.newsPostId,
-      "usersId" : AppData().userdetail!.usersId
+      "newsPostId": widget.postDetail!.newsPostId,
+      "usersId": AppData().userdetail!.usersId
     });
-    if(response['status']=='success'){
+    if (response['status'] == 'success') {
       //print(postDetail![0].toJson());
-      widget.postDetail!.isSadReacted!?widget.postDetail!.sadReactions=(widget.postDetail!.sadReactions!-1):widget.postDetail!.sadReactions=(widget.postDetail!.sadReactions!+1);
-      widget.postDetail!.isSadReacted!?widget.postDetail!.isSadReacted=false:widget.postDetail!.isSadReacted=true;
+      widget.postDetail!.isSadReacted!
+          ? widget.postDetail!.sadReactions =
+              (widget.postDetail!.sadReactions! - 1)
+          : widget.postDetail!.sadReactions =
+              (widget.postDetail!.sadReactions! + 1);
+      widget.postDetail!.isSadReacted!
+          ? widget.postDetail!.isSadReacted = false
+          : widget.postDetail!.isSadReacted = true;
       Navigator.pop(context);
-      setState(() {
-
-      });
+      setState(() {});
       // showCustomSnackBar(response['data'],isError: false);
-    }
-    else{
+    } else {
       Navigator.pop(context);
-      setState(() {
-
-      });
+      setState(() {});
       // showCustomSnackBar(response['message']);
-
     }
   }
+
   Future<void> likeOpinion() async {
     openLoadingDialog(context, "Loading");
     var response;
     response = await DioService.post('like_opinion', {
-      "newsPostId" : widget.postDetail!.newsPostId,
-      "usersId" : AppData().userdetail!.usersId
+      "newsPostId": widget.postDetail!.newsPostId,
+      "usersId": AppData().userdetail!.usersId
     });
-    if(response['status']=='success'){
+    if (response['status'] == 'success') {
       //print(postDetail![0].toJson());
-      widget.postDetail!.isHappyReacted!?widget.postDetail!.happyReactions=(widget.postDetail!.happyReactions!-1):widget.postDetail!.happyReactions=(widget.postDetail!.happyReactions!+1);
-      widget.postDetail!.isHappyReacted!?widget.postDetail!.isHappyReacted=false:widget.postDetail!.isHappyReacted=true;
+      widget.postDetail!.isHappyReacted!
+          ? widget.postDetail!.happyReactions =
+              (widget.postDetail!.happyReactions! - 1)
+          : widget.postDetail!.happyReactions =
+              (widget.postDetail!.happyReactions! + 1);
+      widget.postDetail!.isHappyReacted!
+          ? widget.postDetail!.isHappyReacted = false
+          : widget.postDetail!.isHappyReacted = true;
       Navigator.pop(context);
-      setState(() {
-
-      });
+      setState(() {});
       // showCustomSnackBar(response['data'],isError: false);
-    }
-    else{
+    } else {
       Navigator.pop(context);
-      setState(() {
-
-      });
+      setState(() {});
       // showCustomSnackBar(response['message']);
-
     }
   }
+
   Future<void> dislikeOpinion() async {
     openLoadingDialog(context, "Loading");
     var response;
     response = await DioService.post('dislike_opinion', {
-      "newsPostId" : widget.postDetail!.newsPostId,
-      "usersId" : AppData().userdetail!.usersId
+      "newsPostId": widget.postDetail!.newsPostId,
+      "usersId": AppData().userdetail!.usersId
     });
-    if(response['status']=='success'){
+    if (response['status'] == 'success') {
       //print(postDetail![0].toJson());
-      widget.postDetail!.isSadReacted!?widget.postDetail!.sadReactions=(widget.postDetail!.sadReactions!-1):widget.postDetail!.sadReactions=(widget.postDetail!.sadReactions!+1);
-      widget.postDetail!.isSadReacted!?widget.postDetail!.isSadReacted=false:widget.postDetail!.isSadReacted=true;
+      widget.postDetail!.isSadReacted!
+          ? widget.postDetail!.sadReactions =
+              (widget.postDetail!.sadReactions! - 1)
+          : widget.postDetail!.sadReactions =
+              (widget.postDetail!.sadReactions! + 1);
+      widget.postDetail!.isSadReacted!
+          ? widget.postDetail!.isSadReacted = false
+          : widget.postDetail!.isSadReacted = true;
       Navigator.pop(context);
-      setState(() {
-
-      });
+      setState(() {});
       // showCustomSnackBar(response['data'],isError: false);
-    }
-    else{
+    } else {
       Navigator.pop(context);
-      setState(() {
-
-      });
+      setState(() {});
       // showCustomSnackBar(response['message']);
-
     }
   }
+
   Future<void> viewPost() async {
     //openLoadingDialog(context, "Loading");
     var response;
 
     response = await DioService.post('view_post', {
-      "usersId" : AppData().userdetail!.usersId,
-      "newsPostId" : widget.postDetail!.newsPostId
+      "usersId": AppData().userdetail!.usersId,
+      "newsPostId": widget.postDetail!.newsPostId
     });
-    if(response['status']=='success'){
+    if (response['status'] == 'success') {
       //Navigator.pop(context);
-      setState(() {
-
-      });
+      setState(() {});
       // showCustomSnackBar(response['data'],isError: false);
-    }
-    else{
+    } else {
       //Navigator.pop(context);
-      setState(() {
-
-      });
+      setState(() {});
       // showCustomSnackBar(response['message']);
-
     }
   }
 }
