@@ -30,7 +30,8 @@ import 'package:knaw_news/view/screens/splash/splash_screen.dart';
 import 'package:knaw_news/view/screens/web/initial_screen.dart';
 import 'package:knaw_news/view/screens/web/web_home.dart';
 import 'package:url_strategy/url_strategy.dart';
-void main() async{
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy();
   FacebookAuth.instance.webInitialize(
@@ -58,7 +59,7 @@ void main() async{
     ),
   );
   await AppData.initiate();
-  AppData().userlocation=UserLocation();
+  AppData().userlocation = UserLocation();
   runApp(const MyApp());
 }
 
@@ -74,12 +75,21 @@ class MyApp extends StatelessWidget {
       scrollBehavior: MyCustomScrollBehavior().copyWith(scrollbars: false),
       theme: light,
       routes: {
-        "/" : (context) => GetPlatform.isDesktop?AppData().isAuthenticated?WebHome():InitialScreen():AppData().isAuthenticated?HomeScreen():Initial(),
+        "/": (context) => GetPlatform.isDesktop
+            ? AppData().isAuthenticated
+                ? WebHome()
+                : InitialScreen()
+            : AppData().isAuthenticated
+                ? HomeScreen()
+                : Initial(),
         "/WebHome": (context) => WebHome(),
+        "/initial": (context) => InitialScreen(),
         "/WebProfile": (context) => WebProfile(),
         "/Profile": (context) => ProfileScreen(),
         "/WebSearch": (context) => WebSearch(),
-        "/WebFollowProfile": (context) => WebFollowProfile(userId: int.tryParse(Get.parameters['id']??'0'),),
+        "/WebFollowProfile": (context) => WebFollowProfile(
+              userId: int.tryParse(Get.parameters['id'] ?? '0'),
+            ),
         "/ProfileSetting": (context) => ProfileSetting(),
         "/WebPostScreen": (context) => WebPostScreen(),
         "/WebAbout": (context) => WebAbout(),
@@ -95,4 +105,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
