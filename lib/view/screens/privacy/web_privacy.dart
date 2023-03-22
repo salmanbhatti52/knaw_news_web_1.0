@@ -12,14 +12,14 @@ import 'package:knaw_news/view/base/web_menu_bar.dart';
 import 'package:knaw_news/view/screens/menu/app_bar.dart';
 import 'package:knaw_news/view/screens/menu/drawer.dart';
 
-class WebAbout extends StatefulWidget {
-  const WebAbout({Key? key}) : super(key: key);
+class WebPrivacy extends StatefulWidget {
+  const WebPrivacy({Key? key}) : super(key: key);
 
   @override
-  State<WebAbout> createState() => _WebAboutState();
+  State<WebPrivacy> createState() => _WebPrivacyState();
 }
 
-class _WebAboutState extends State<WebAbout> {
+class _WebPrivacyState extends State<WebPrivacy> {
   Future<AboutModel>? aboutModel;
   String about="";
   @override
@@ -34,7 +34,7 @@ class _WebAboutState extends State<WebAbout> {
   Widget build(BuildContext context) {
     Size size=MediaQuery.of(context).size;
     double mediaWidth=size.width;
-      mediaWidth/=2;
+    mediaWidth/=2;
     return Scaffold(
       appBar: WebMenuBar(context: context,isAuthenticated: AppData().isAuthenticated,isSearch: false,isHalf: true,),
       body: SafeArea(child: SingleChildScrollView(
@@ -48,11 +48,9 @@ class _WebAboutState extends State<WebAbout> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(AppData().language!.about,style: openSansBold),
+                Text("Privacy",style: openSansBold),
                 SizedBox(height: 15,),
-                Text("Knaw News is a low budget project new and info site where the content is shared and organised by users for users."
-                 " Whether you’re looking for events around you, or the latest happening in your city, town or neighbourhood, users there will know the scoop."
-                 " Give me the good news first! It’s difficult to control or shuffle through the ocean of news we we’re flooded with, Knaw News is different, find the flavour you feel for the day, only the mood of content you want to see.",
+                Text("Knaw News has no interest in collecting peoples data, see content the natural way, discover and explore without optimisation, filtration.",
                   style: openSansRegular.copyWith(color: textColor,fontSize: Dimensions.fontSizeExtraSmall),),
               ],
             ),

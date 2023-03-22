@@ -171,12 +171,12 @@ class _FullTransitionState extends State<FullTransition> {
               ),
 
               Container(
-                height: 420,
-                padding: EdgeInsets.symmetric(vertical: 5),
+                height: 400,
+                padding: EdgeInsets.only(left: 25,right: 25),
                 child: ClipRRect(
                   child: widget.postDetail!.postPicture == null ||
                           widget.postDetail!.postPicture == ""
-                      ? SizedBox()
+                      ? Text("")
                       : Image.network(
                           //"https://cros-anywhere.herokuapp.com/"+widget.postDetail!.postPicture??'',
                           widget.postDetail!.postPicture!,
@@ -184,7 +184,7 @@ class _FullTransitionState extends State<FullTransition> {
                               ? MediaQuery.of(context).size.width * 0.2
                               : MediaQuery.of(context).size.height * 0.25,
                           width: MediaQuery.of(context).size.width * 0.9,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.fill,
                         ),
                 ),
               ),

@@ -19,6 +19,8 @@ import 'package:knaw_news/view/screens/profile/profile_screen.dart';
 import 'package:knaw_news/view/screens/web/widget/web_sidebar_item.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../privacy/web_privacy.dart';
+
 
 class Help extends StatelessWidget {
 
@@ -36,10 +38,13 @@ class Help extends StatelessWidget {
         HelpItem(text: isLanguage?AppData().language!.about:"About",onTap: () => Get.toNamed("/WebAbout"),),
         //Get.to(ContactUs()),
         HelpItem(text: isLanguage?AppData().language!.contactUs:"Contact us",onTap: () => Get.toNamed("/ContactUs"),),
-        HelpItem(text: isLanguage?AppData().language!.copyright:"Copyright",onTap: (){},),
-        HelpItem(text: isLanguage?AppData().language!.privacyPolicy:"Privacy Policy",onTap: (){},),
-        HelpItem(text: isLanguage?AppData().language!.termsConditions:"Terms & Conditions",onTap: (){},),
-        HelpItem(text: isLanguage?AppData().language!.howKnawNewsWorks:"How Knawnews Works",onTap: (){},),
+        // HelpItem(text: isLanguage?AppData().language!.copyright:"Copyright",onTap: (){},),
+        HelpItem(text: isLanguage?"Privacy":"Privacy",onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>WebPrivacy()));
+
+        },),
+        // HelpItem(text: isLanguage?AppData().language!.termsConditions:"Terms & Conditions",onTap: (){},),
+        // HelpItem(text: isLanguage?AppData().language!.howKnawNewsWorks:"How Knawnews Works",onTap: (){},),
       ],
     );
   }
