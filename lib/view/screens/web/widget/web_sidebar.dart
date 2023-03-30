@@ -33,15 +33,18 @@ class WebSideBar extends StatelessWidget {
     bool isLanguage=AppData().isLanguage;
     double width=MediaQuery.of(context).size.width;
 
-    return Column(
-      children: [
-        WebSideBarItem(icon: Images.home, title: isLanguage?AppData().language!.home:"Home", onTap: (){}),
-        WebSideBarItem(icon: Images.user, title: isLanguage?AppData().language!.profile:"Profile", onTap: () =>isLogin?Get.toNamed("/WebProfile"):Get.toNamed("/WebSignIn")),
-        WebSideBarItem(icon: Images.inbox, title: isLanguage?AppData().language!.inbox:"Inbox", onTap: () =>isLogin?Get.toNamed("/WebInbox"):Get.toNamed("/WebSignIn")),
-        WebSideBarItem(icon: Images.setting, title: isLanguage?AppData().language!.setting:"Setting", onTap: () =>isLogin?Get.toNamed("/ProfileSetting"):Get.toNamed("/WebSignIn")),
-        if(isLogin)WebSideBarItem(icon: Images.bookmark, title: isLanguage?AppData().language!.bookmarkPosts:"Bookmark Posts", onTap: () => Get.toNamed("/WebProfile",arguments: 1.toString())),
-        if(isLogin)WebSideBarItem(icon: Images.mynews, title: isLanguage?AppData().language!.myKnawNews:"My KnawNews", onTap: () => Get.toNamed("/WebProfile")),
-      ],
+    return Scrollbar(
+      interactive: true,
+      child: Column(
+        children: [
+          WebSideBarItem(icon: Images.home, title: isLanguage?AppData().language!.home:"Home", onTap: (){}),
+          WebSideBarItem(icon: Images.user, title: isLanguage?AppData().language!.profile:"Profile", onTap: () =>isLogin?Get.toNamed("/WebProfile"):Get.toNamed("/WebSignIn")),
+          WebSideBarItem(icon: Images.inbox, title: isLanguage?AppData().language!.inbox:"Inbox", onTap: () =>isLogin?Get.toNamed("/WebInbox"):Get.toNamed("/WebSignIn")),
+          WebSideBarItem(icon: Images.setting, title: isLanguage?AppData().language!.setting:"Setting", onTap: () =>isLogin?Get.toNamed("/ProfileSetting"):Get.toNamed("/WebSignIn")),
+          if(isLogin)WebSideBarItem(icon: Images.bookmark, title: isLanguage?AppData().language!.bookmarkPosts:"Bookmark Posts", onTap: () => Get.toNamed("/WebProfile",arguments: 1.toString())),
+          if(isLogin)WebSideBarItem(icon: Images.mynews, title: isLanguage?AppData().language!.myKnawNews:"My KnawNews", onTap: () => Get.toNamed("/WebProfile")),
+        ],
+      ),
     );
   }
 }

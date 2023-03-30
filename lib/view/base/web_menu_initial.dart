@@ -16,9 +16,7 @@ import 'package:knaw_news/view/screens/search/web_search.dart';
 import 'package:knaw_news/view/screens/search/widget/search_field.dart';
 import 'package:knaw_news/view/screens/web/web_home.dart';
 
-import '../screens/web/initial_screen.dart';
-
-class WebMenuBar extends StatefulWidget implements PreferredSizeWidget {
+class WebMenuBarInitial extends StatefulWidget implements PreferredSizeWidget {
   int index;
   BuildContext context;
   bool isAuthScreen;
@@ -27,17 +25,17 @@ class WebMenuBar extends StatefulWidget implements PreferredSizeWidget {
   bool searchText;
   bool isHalf;
   Function(String title)? onTap;
-  WebMenuBar({this.onTap,this.index=5,required this.context,this.isAuthScreen=false,
+  WebMenuBarInitial({this.onTap,this.index=5,required this.context,this.isAuthScreen=false,
     this.isAuthenticated=false,this.isSearch=true,this.searchText=false,this.isHalf=false});
   @override
-  State<WebMenuBar> createState() => _WebMenuBarState();
+  State<WebMenuBarInitial> createState() => _WebMenuBarInitialState();
 
   @override
   Size get preferredSize => Size(MediaQuery.of(context).size.width<1000?MediaQuery.of(context).size.width:MediaQuery.of(context).size.width*0.7, 100);
 
 }
 
-class _WebMenuBarState extends State<WebMenuBar> {
+class _WebMenuBarInitialState extends State<WebMenuBarInitial> {
 
   bool isActiveHome=false;
   bool isActiveOrder=false;
@@ -58,7 +56,7 @@ class _WebMenuBarState extends State<WebMenuBar> {
     // TODO: implement initState
     super.initState();
     if(widget.index==1)
-       isActiveHome=true;
+      isActiveHome=true;
     else if(widget.index==2)
       isActiveOrder=true;
     else if(widget.index==3)
@@ -87,7 +85,7 @@ class _WebMenuBarState extends State<WebMenuBar> {
       ),
       child: Container(
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment:MainAxisAlignment.spaceBetween,
             children: [
               InkWell(
@@ -127,69 +125,51 @@ class _WebMenuBarState extends State<WebMenuBar> {
               ):SizedBox(),
               isAuthScreen?SizedBox():Row(
                 children: [
-                InkWell(
+                  InkWell(
                     child: SvgPicture.asset(Images.add,color: textColor),
-                  onTap: () => isAuthenticated?Get.toNamed("/WebPostScreen"):Get.toNamed("/WebSignIn"),
-                ),
-                SizedBox(width: 20,),
-                isAuthenticated?InkWell(
-                  onTap: () => Get.toNamed("/WebProfile"),
-                  child: Stack(
-                    children: [
-                      ClipOval(
-                        child: AppData().userdetail!.profilePicture==null||AppData().userdetail!.profilePicture!.isEmpty?CustomImage(
-                          image: Images.placeholder,
-                          height: 40,
-                          width: 40,
-                          fit: BoxFit.cover,
-                        ):Image.network(
-                          AppData().userdetail!.profilePicture!,
-                          width: 40,height: 40,fit: BoxFit.cover,
-                        ),
-                      ),
-                      AppData().userdetail!.userVerified?Positioned(
-                        bottom: 0, right: 0,
-                        child: SvgPicture.asset(Images.badge,height: 15,width: 15,),
-                      ):SizedBox(),
-                    ],
+                    onTap: () => isAuthenticated?Get.toNamed("/WebPostScreen"):Get.toNamed("/WebSignIn"),
                   ),
-                ):SizedBox(),
-                  Container(
+                  SizedBox(width: 20,),
+                  isAuthenticated?InkWell(
+                    onTap: () => Get.toNamed("/WebProfile"),
+                    child: Stack(
+                      children: [
+                        ClipOval(
+                          child: AppData().userdetail!.profilePicture==null||AppData().userdetail!.profilePicture!.isEmpty?CustomImage(
+                            image: Images.placeholder,
+                            height: 40,
+                            width: 40,
+                            fit: BoxFit.cover,
+                          ):Image.network(
+                            AppData().userdetail!.profilePicture!,
+                            width: 40,height: 40,fit: BoxFit.cover,
+                          ),
+                        ),
+                        AppData().userdetail!.userVerified?Positioned(
+                          bottom: 0, right: 0,
+                          child: SvgPicture.asset(Images.badge,height: 15,width: 15,),
+                        ):SizedBox(),
+                      ],
+                    ),
+                  ):SizedBox(),
+
+                  SizedBox(width: 10,),
+                  isAuthenticated?SizedBox():Container(
                     height: 30,
-                    width: 100,
-                    padding: EdgeInsets.only(left: mediaWidth*0.02,right: mediaWidth*0.01),
-                    margin: EdgeInsets.only(top: 10,bottom: 10),
+                    width: 80,
                     child: TextButton(
-                      onPressed: () {
-                        AppData().signOut();
-                        Get.offAll(() => InitialScreen());
-                      },
+                      onPressed: () => Get.toNamed("/WebSignIn"),
                       style: webFlatButtonStyle,
                       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                        Text(AppData().language!.logout.toUpperCase(), textAlign: TextAlign.center, style: openSansBold.copyWith(
+                        Text(AppData().isLanguage?AppData().language!.signIn.toUpperCase():"SIGN IN", textAlign: TextAlign.center, style: openSansBold.copyWith(
                           color: textBtnColor,
                           fontSize: Dimensions.fontSizeExtraSmall,
                         )),
+
                       ]),
                     ),
                   ),
-                SizedBox(width: 10,),
-                isAuthenticated?SizedBox():Container(
-                  height: 30,
-                  width: 80,
-                  child: TextButton(
-                    onPressed: () => Get.toNamed("/WebSignIn"),
-                    style: webFlatButtonStyle,
-                    child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      Text(AppData().isLanguage?AppData().language!.signIn.toUpperCase():"SIGN IN", textAlign: TextAlign.center, style: openSansBold.copyWith(
-                        color: textBtnColor,
-                        fontSize: Dimensions.fontSizeExtraSmall,
-                      )),
-
-                    ]),
-                  ),
-                ),
-              ],
+                ],
               ),
 
 

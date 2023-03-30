@@ -82,22 +82,16 @@ class _FullTransitionState extends State<FullTransition> {
                   left: MediaQuery.of(context).size.width * 0.01,
                 ),
                 width: MediaQuery.of(context).size.width * 0.9,
-                child: ListView(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  children: [
-                    Wrap(children: [
-                      Text(
-                        widget.postDetail!.title ?? '',
-                        maxLines: 2,
-                        style: openSansSemiBold.copyWith(
-                            fontSize: Dimensions.fontSizeDefault,
-                            color: Colors.black),
-                      ),
-                      //postDetail!.description!.length<100?postDetail!.description!+"\n":
-                    ]),
-                  ],
-                ),
+                child: Wrap(children: [
+                  Text(
+                    widget.postDetail!.title ?? '',
+                    maxLines: 2,
+                    style: openSansSemiBold.copyWith(
+                        fontSize: Dimensions.fontSizeDefault,
+                        color: Colors.black),
+                  ),
+                  //postDetail!.description!.length<100?postDetail!.description!+"\n":
+                ]),
               ),
               // post Date
               Padding(
@@ -169,28 +163,44 @@ class _FullTransitionState extends State<FullTransition> {
                   ],
                 ),
               ),
-
+SizedBox(height: 10,),
               Container(
-                height: 400,
-                padding: EdgeInsets.only(left: 25,right: 25),
-                child: ClipRRect(
-                  child: widget.postDetail!.postPicture == null ||
-                          widget.postDetail!.postPicture == ""
-                      ? Text("")
-                      : Image.network(
-                          //"https://cros-anywhere.herokuapp.com/"+widget.postDetail!.postPicture??'',
-                          widget.postDetail!.postPicture!,
-                          height: GetPlatform.isDesktop
-                              ? MediaQuery.of(context).size.width * 0.2
-                              : MediaQuery.of(context).size.height * 0.25,
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          fit: BoxFit.fill,
-                        ),
+                margin: EdgeInsets.only(left: 20,right: 20),
+                height: GetPlatform.isDesktop
+                    ? MediaQuery.of(context).size.width * 0.3
+                    : MediaQuery.of(context).size.height * 0.25,
+                width: MediaQuery.of(context).size.width * 0.9,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      //"https://cros-anywhere.herokuapp.com/"+widget.postDetail!.postPicture??'',
+                      widget.postDetail!.postPicture!,
+
+                    ),
+                    fit: BoxFit.fill,
+
+                  )
                 ),
+                // child: ClipRRect(
+                //   child: widget.postDetail!.postPicture == null ||
+                //           widget.postDetail!.postPicture == ""
+                //       ? SizedBox()
+                //       : Image.network(
+                //           //"https://cros-anywhere.herokuapp.com/"+widget.postDetail!.postPicture??'',
+                //           widget.postDetail!.postPicture!,
+                //           height: GetPlatform.isDesktop
+                //               ? MediaQuery.of(context).size.width * 0.2
+                //               : MediaQuery.of(context).size.height * 0.25,
+                //           width: MediaQuery.of(context).size.width * 0.9,
+                //           fit: BoxFit.fill,
+                //         ),
+                // ),
               ),
               // Action Bar
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 5),
+                padding: EdgeInsets.only(left: 25,right: 25),
+
                 child: Row(
                   children: [
                     VerticalTile(
