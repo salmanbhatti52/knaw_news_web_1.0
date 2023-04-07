@@ -181,8 +181,6 @@ class LanguageAdapter extends TypeAdapter<Language> {
       myProfileSetting: fields[162] as String,
       Save: fields[163] as String,
       loading: fields[164] as String,
-      local:  fields[165] as String,
-      national: fields[166] as String,
     );
   }
 
@@ -517,12 +515,7 @@ class LanguageAdapter extends TypeAdapter<Language> {
       ..writeByte(163)
       ..write(obj.Save)
       ..writeByte(164)
-      ..write(obj.loading)
-      ..writeByte(165)
-      ..write(obj.local)
-      ..writeByte(166)
-      ..write(obj.national);
-
+      ..write(obj.loading);
   }
 
   @override
@@ -707,10 +700,6 @@ Language _$LanguageFromJson(Map<String, dynamic> json) => Language(
       myProfileSetting: json['my_profile_setting'] as String? ?? "",
       Save: json['Save'] as String? ?? "",
       loading: json['loading'] as String? ?? "",
-      local: json['local'] as String? ?? "",
-      national: json['national'] as String? ?? "",
-
-
     );
 
 Map<String, dynamic> _$LanguageToJson(Language instance) => <String, dynamic>{
@@ -878,6 +867,4 @@ Map<String, dynamic> _$LanguageToJson(Language instance) => <String, dynamic>{
       'my_profile_setting': instance.myProfileSetting,
       'Save': instance.Save,
       'loading': instance.loading,
-      'local': instance.local,
-      'national': instance.national,
     };

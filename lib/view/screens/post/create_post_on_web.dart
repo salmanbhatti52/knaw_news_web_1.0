@@ -400,22 +400,6 @@ class _WebPostScreenState extends State<WebPostScreen> {
                               post.category="Health";
                             });
                           },),
-                        CategoryItem(title: AppData().language!.local, icon: Images.global_news,isSelected: category==10?true:false,
-                          onTap: (){
-                            setState(() {
-                              isEvent=false;
-                              category=10;
-                              post.category="Local";
-                            });
-                          },),
-                        CategoryItem(title: AppData().language!.national, icon: Images.global_news,isSelected: category==11?true:false,
-                          onTap: (){
-                            setState(() {
-                              isEvent=false;
-                              category=11;
-                              post.category="National";
-                            });
-                          },),
                       ],
                     ),
                   ),
@@ -855,8 +839,8 @@ class _WebPostScreenState extends State<WebPostScreen> {
     });
     if(response['status']=='success'){
       print("1---------------success response-----------");
-      // Navigator.pop(context);
-      // Get.toNamed("/");
+      Navigator.pop(context);
+      Get.toNamed("/");
     }
     else{
       print("2---------------error response-----------");

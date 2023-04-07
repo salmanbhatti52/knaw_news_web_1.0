@@ -67,7 +67,7 @@ class _WebHomeState extends State<WebHome> with TickerProviderStateMixin {
   String category="Most Popular";
   String offset="0";
   bool isLoading=true;
-  List<String> categoryList=["Most Popular","Happy","Sad","Your News Feed","Global News","Events","Business","Opinion","Technology", "Entertainment","Sports","Beauty","Science","Health","Local","National"];
+  List<String> categoryList=["Most Popular","Happy","Sad","Your News Feed","Global News","Events","Business","Opinion","Technology", "Entertainment","Sports","Beauty","Science","Health",];
   List<PostDetail>? postDetail;
   List<PostDetail>? recentPostDetail=[PostDetail()];
   List<FollowDetail>? followDetail;
@@ -82,7 +82,7 @@ class _WebHomeState extends State<WebHome> with TickerProviderStateMixin {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _tabController = TabController(length: 16, initialIndex: 0, vsync: this,);
+    _tabController = TabController(length: 14, initialIndex: 0, vsync: this,);
     _tabController!.addListener(_handleTabSelection);
     scrollController.addListener(_handleScroll);
     getLocation();
@@ -218,20 +218,6 @@ class _WebHomeState extends State<WebHome> with TickerProviderStateMixin {
                                 setState(() {});
                                 loadPosts();
                               },),
-                              CategoryItem(title: AppData().language!.local, icon: Images.global_news,isSelected: selected==15?true:false,onTap: (){
-                                selected=15;
-                                category="Local";
-                                setState(() {});
-                                loadPosts();
-
-                              },),
-                              CategoryItem(title: AppData().language!.national, icon: Images.global_news,isSelected: selected==16?true:false,onTap: (){
-                                selected=16;
-                                category="National";
-                                setState(() {});
-                                loadPosts();
-
-                              },),
                             ],
 
                           ),
@@ -240,7 +226,7 @@ class _WebHomeState extends State<WebHome> with TickerProviderStateMixin {
                       SizedBox(width: 10,),
                       InkWell(
                         onTap: (){
-                          if(_tabController!.index<16){
+                          if(_tabController!.index<13){
                             _tabController!.index++;
                           }
                         },

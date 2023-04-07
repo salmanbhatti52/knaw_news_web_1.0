@@ -182,7 +182,20 @@ SizedBox(height: 10,),
 
                   )
                 ),
-
+                // child: ClipRRect(
+                //   child: widget.postDetail!.postPicture == null ||
+                //           widget.postDetail!.postPicture == ""
+                //       ? SizedBox()
+                //       : Image.network(
+                //           //"https://cros-anywhere.herokuapp.com/"+widget.postDetail!.postPicture??'',
+                //           widget.postDetail!.postPicture!,
+                //           height: GetPlatform.isDesktop
+                //               ? MediaQuery.of(context).size.width * 0.2
+                //               : MediaQuery.of(context).size.height * 0.25,
+                //           width: MediaQuery.of(context).size.width * 0.9,
+                //           fit: BoxFit.fill,
+                //         ),
+                // ),
               ):Text(""),
               // Action Bar
               Container(
