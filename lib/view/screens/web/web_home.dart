@@ -67,7 +67,7 @@ class _WebHomeState extends State<WebHome> with TickerProviderStateMixin {
   String category="Most Popular";
   String offset="0";
   bool isLoading=true;
-  List<String> categoryList=["Most Popular","Happy","Sad","Your News Feed","Global News","Events","Business","Opinion","Technology", "Entertainment","Sports","Beauty","Science","Health",];
+  List<String> categoryList=["Most Popular","Happy","Sad","Your News Feed","Global News","Events","Business","Opinion","Technology", "Entertainment","Sports","Beauty","Science","Health","Local","National"];
   List<PostDetail>? postDetail;
   List<PostDetail>? recentPostDetail=[PostDetail()];
   List<FollowDetail>? followDetail;
@@ -82,7 +82,7 @@ class _WebHomeState extends State<WebHome> with TickerProviderStateMixin {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _tabController = TabController(length: 14, initialIndex: 0, vsync: this,);
+    _tabController = TabController(length: 16, initialIndex: 0, vsync: this,);
     _tabController!.addListener(_handleTabSelection);
     scrollController.addListener(_handleScroll);
     getLocation();
@@ -218,6 +218,18 @@ class _WebHomeState extends State<WebHome> with TickerProviderStateMixin {
                                 setState(() {});
                                 loadPosts();
                               },),
+                              CategoryItem(title: "Local", icon: Images.global_news,isSelected: selected==15?true:false,onTap: (){
+                                selected=15;
+                                category="Local";
+                                setState(() {});
+                                loadPosts();
+                              },),
+                              CategoryItem(title: "National", icon: Images.global_news,isSelected: selected==16?true:false,onTap: (){
+                                selected=16;
+                                category="National";
+                                setState(() {});
+                                loadPosts();
+                              },),
                             ],
 
                           ),
@@ -226,7 +238,7 @@ class _WebHomeState extends State<WebHome> with TickerProviderStateMixin {
                       SizedBox(width: 10,),
                       InkWell(
                         onTap: (){
-                          if(_tabController!.index<13){
+                          if(_tabController!.index<16){
                             _tabController!.index++;
                           }
                         },
@@ -472,6 +484,7 @@ class _WebHomeState extends State<WebHome> with TickerProviderStateMixin {
       return;
     }
     openLoadingDialog(context, "Loading");
+    print("something");
     var response;
     response = await DioService.post('all_news_with_base_filter', {
       "usersId" : AppData().userdetail!.usersId,
@@ -480,8 +493,10 @@ class _WebHomeState extends State<WebHome> with TickerProviderStateMixin {
       if(categoryTag.isNotEmpty)"categoryTag": categoryTag,
       "userCountry": AppData().userdetail!.country
     });
+    print("ststus: ${response['status']}");
     if(response['status']=='success'){
       var jsonData= response['data'] as List;
+      print("category: ${jsonData}");
      postDetail=  jsonData.map<PostDetail>((e) => PostDetail.fromJson(e)).toList();
       Navigator.pop(context);
       setState(() {

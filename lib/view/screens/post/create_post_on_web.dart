@@ -400,6 +400,26 @@ class _WebPostScreenState extends State<WebPostScreen> {
                               post.category="Health";
                             });
                           },),
+                        SizedBox(width: 5,),
+
+                        CategoryItem(title: "Local", icon: Images.global_news,isSelected: category==10?true:false,
+                          onTap: (){
+                            setState(() {
+                              isEvent=false;
+                              category=10;
+                              post.category="Local";
+                            });
+                          },),
+
+                        CategoryItem(title: "National", icon: Images.global_news,isSelected: category==11?true:false,
+                          onTap: (){
+                            setState(() {
+                              isEvent=false;
+                              category=11;
+                              post.category="National";
+                            });
+                          },),
+
                       ],
                     ),
                   ),
