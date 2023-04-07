@@ -67,7 +67,7 @@ class _InitialScreenState extends State<InitialScreen> with TickerProviderStateM
   String category="Most Popular";
   String offset="0";
   bool isLoading=true;
-  List<String> categoryList=["Most Popular","Happy","Sad","Your News Feed","Global News","Events","Business","Opinion","Technology", "Entertainment","Sports","Beauty","Science","Health",];
+  List<String> categoryList=["Most Popular","Happy","Sad","Your News Feed","Global News","Events","Business","Opinion","Technology", "Entertainment","Sports","Beauty","Science","Health","Local","National"];
   List<PostDetail>? postDetail;
   List<PostDetail>? recentPostDetail=[PostDetail()];
   int totalPost=-1;
@@ -79,7 +79,7 @@ class _InitialScreenState extends State<InitialScreen> with TickerProviderStateM
     super.initState();
     isLanguage=AppData().isLanguage;
     getLanguage();
-    _tabController = TabController(length: 14, initialIndex: 0, vsync: this,);
+    _tabController = TabController(length: 16, initialIndex: 0, vsync: this,);
     _tabController!.addListener(_handleTabSelection);
     scrollController.addListener(_handleScroll);
     //loadOtherPosts(isTap: false);
@@ -224,6 +224,20 @@ class _InitialScreenState extends State<InitialScreen> with TickerProviderStateM
                                     loadPosts();
 
                                   },),
+                                  CategoryItem(title: isLanguage?AppData().language!.local:'Local', icon: Images.global_news,isSelected: selected==15?true:false,onTap: (){
+                                    selected=15;
+                                    category="Local";
+                                    setState(() {});
+                                    loadPosts();
+
+                                  },),
+                                  CategoryItem(title: isLanguage?AppData().language!.national:'National', icon: Images.global_news,isSelected: selected==16?true:false,onTap: (){
+                                    selected=16;
+                                    category="National";
+                                    setState(() {});
+                                    loadPosts();
+
+                                  },),
                                 ],
 
                               ),
@@ -233,7 +247,7 @@ class _InitialScreenState extends State<InitialScreen> with TickerProviderStateM
                       SizedBox(width: 10,),
                       InkWell(
                           onTap: (){
-                            if(_tabController!.index<13){
+                            if(_tabController!.index<15){
                               _tabController!.index++;
                             }
                             //showCustomSnackBar(AppData().isLanguage.toString());

@@ -421,6 +421,10 @@ class Language extends HiveObject{
   String Save;
   @HiveField(164)
   String loading;
+  @HiveField(165)
+  String local;
+  @HiveField(166)
+  String national;
   Language({
     this.knawNews="",this.dashboard="",this.account="",this.name="",this.language="",this.settings="",
     this.manageProfile="",this.changePassword="",this.newPassword="",this.confirmNewPassword="",
@@ -453,7 +457,7 @@ class Language extends HiveObject{
     this.mute="",this.unmute="",this.select="",this.selected="",this.currentLanguage="",this.recentPosts="",
     this.home="",this.copyright="",this.privacyPolicy="",this.termsConditions="",this.howKnawNewsWorks="",
     this.oR="",this.languageCode="",this.followingAccounts="",this.suggestedAccounts="",this.createPost="",
-    this.loadMore="",this.myProfileSetting="",this.Save="",this.loading=""
+    this.loadMore="",this.myProfileSetting="",this.Save="",this.loading="",this.local="",this.national=""
   });
 
   Map<String, dynamic> toJson() => _$LanguageToJson(this);
