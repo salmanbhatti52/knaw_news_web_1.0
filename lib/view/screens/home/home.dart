@@ -235,12 +235,18 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       return;
     }
     openLoadingDialog(context, "Loading");
+    print("usersId ${AppData().userdetail!.usersId}");
+    print("offset ${offset}");
+    print("category ${category}");
+    print("userCountry ${AppData().userdetail!.country}");
     var response;
     response = await DioService.post('all_news_with_base_filter', {
       "usersId" : AppData().userdetail!.usersId,
       "offset": offset,
       "category": category,
-      "userCountry": AppData().userdetail!.country
+      "userCountry": AppData().userdetail!.country,
+      "userLat":0.00,
+      "userLong":0.00
     });
     if(response['status']=='success'){
       var jsonData= response['data'] as List;
@@ -275,7 +281,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       "usersId" : AppData().userdetail!.usersId,
       "offset": offset,
       "category": category,
-      "userCountry": AppData().userdetail!.country
+      "userCountry": AppData().userdetail!.country,
+      "userLat":0.00,
+      "userLong":0.00
 
     });
     if(response['status']=='success'){
